@@ -1,1 +1,7 @@
-inital text
+# plan
+
+# backlog
+
+# usage
+
+# get started
