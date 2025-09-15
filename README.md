@@ -18,5 +18,6 @@
 - [ ] research
     - [ ] which platforms support api?
     - [ ] use user script like selenium?
+    - [ ] web och mobile app?
 
 # get started
