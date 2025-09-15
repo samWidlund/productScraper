@@ -16,5 +16,7 @@
 
 # backlog
 - [ ] research
+    - [ ] which platforms support api?
+    - [ ] use user script like selenium?
 
 # get started
