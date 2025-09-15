@@ -19,5 +19,10 @@
     - [ ] which platforms support api?
     - [ ] use user script like selenium?
     - [ ] web och mobile app?
+- [ ] language
+    - [ ] python backend? 
+    - [ ] react or react native?
+    - [ ] local or online host?
+        - [ ] github actions? 
 
 # get started
