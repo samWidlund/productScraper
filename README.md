@@ -25,4 +25,7 @@
     - [ ] local or online host?
         - [ ] github actions? 
 
+# currently
+- testing around with telegram bot api, just got it working with python script.
+
 # get started
