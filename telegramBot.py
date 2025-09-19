@@ -6,7 +6,6 @@ from telegram.ext import Application, CommandHandler, MessageHandler, filters, C
 
 # load .env values
 load_dotenv()
-
 BOT_TOKEN = (os.getenv("BOT_TOKEN"))
 TOKEN: Final = BOT_TOKEN
 BOT_USERNAME: Final = '@samProductBot'
@@ -16,7 +15,7 @@ async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text('TJENA!!!!!!!!')
 
 async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text('type sum')
+    await update.message.reply_text('🚨 Arcteryx found for 999 sek! 🚨')
     
 async def custom_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text('custom shit')
@@ -28,6 +27,7 @@ def handle_response(text: str) -> str:
     if 'hello' in processed:
         return 'you whatsup!'
 
+    # print if no matching input
     return 'dunno what you saying'
 
 async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
