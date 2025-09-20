@@ -21,8 +21,7 @@
 - [ ] begin working with scraping tool
     - [ ] research - api? selenium? scrapy?
 
-# currently
-- testing around with telegram bot api, just got it working with python script.
-- dotenv does not work with github actions?
-
-# get started
+# ideas
+https://github.com/kyleronayne/marketplace-api
+https://github.com/scrapy/scrapy
+https://github.com/D4Vinci/Scrapling
