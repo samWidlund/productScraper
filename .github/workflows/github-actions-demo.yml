@@ -3,6 +3,7 @@ name: Python Script Workflow
 on:
   push:
     branches:
+      -new_py
       -*
 
 jobs:
