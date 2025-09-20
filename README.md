@@ -27,5 +27,6 @@
 
 # currently
 - testing around with telegram bot api, just got it working with python script.
+- dotenv does not work with github actions?
 
 # get started

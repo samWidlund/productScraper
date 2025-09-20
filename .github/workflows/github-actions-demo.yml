@@ -20,7 +20,7 @@ jobs:
           cache: 'pip'
       
       - name: Install dependencies
-        run: pip install python-dotenv requests
+        run: pip install -r requirements.txt      
       
       - name: Run Python script
         run: python telegramBot.py
