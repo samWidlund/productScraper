@@ -8,6 +8,9 @@ on:
 jobs:
   run-python-script:
     runs-on: ubuntu-latest
+    env:
+      BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+      BOT_CHAT_ID: ${{ secrets.BOT_CHAT_ID }}
     
     steps:
       - name: Checkout code
