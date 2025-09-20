@@ -3,7 +3,8 @@ name: Python Script Workflow
 on:
   push:
     branches:
-      - main
+      -new_py
+      -*
 
 jobs:
   run-python-script:
@@ -19,4 +20,4 @@ jobs:
           python-version: '3.10'
       
       - name: Run Python script
-        run: python test_gh_actions.py
+        run: python telegramBot.py

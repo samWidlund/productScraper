@@ -1,71 +1,41 @@
 import os
-from dotenv import load_dotenv, dotenv_values
-from typing import Final
-from telegram import Update
-from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
+from dotenv import load_dotenv
+import requests
+import sys
 
-# load .env values
 load_dotenv()
-BOT_TOKEN = (os.getenv("BOT_TOKEN"))
-TOKEN: Final = BOT_TOKEN
-BOT_USERNAME: Final = '@samProductBot'
+TOKEN = os.getenv("BOT_TOKEN")
+CHAT_ID = os.getenv("BOT_CHAT_ID")
 
-# return chat on command
-async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text('TJENA!!!!!!!!')
-
-async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text('🚨 Arcteryx found for 999 sek! 🚨')
+def notify_product(title, price, url):
+    if not TOKEN or not CHAT_ID:
+        print("Fel: TOKEN eller CHAT_ID är inte satta som miljövariabler")
+        return False
     
-async def custom_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text('custom shit')
-
-# responses
-def handle_response(text: str) -> str:
-    processed: str = text.lower()
-
-    if 'hello' in processed:
-        return 'you whatsup!'
-
-    # print if no matching input
-    return 'dunno what you saying'
-
-async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    message_type: str = update.message.chat.type
-    text: str = update.message.text
-
-    print(f'User ({update.message.chat.id}) in {message_type}: "{text}"')
-
-    if message_type == 'group':
-        if BOT_USERNAME in text:
-            new_text: str = text.replace(BOT_USERNAME, '').strip()
-            response: str = handle_response(new_text)
+    text = f"🔥 Ny produkt hittad!\n\n{title}\nPris: {price} kr\n{url}"
+    url_api = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
+    
+    try:
+        r = requests.post(url_api, data={"chat_id": CHAT_ID, "text": text}, timeout=10)
+        r.raise_for_status()  # throw exception when http error
+        
+        response = r.json()
+        if response.get("ok"):
+            print("message sent!")
+            return True
         else:
-            return
-    else:
-        response: str = handle_response(text)
+            print(f"wrong answer from Telegram API: {response}")
+            return False
+            
+    except requests.exceptions.RequestException as e:
+        print(f"network error: {e}")
+        return False
+    except Exception as e:
+        print(f"unexpected error: {e}")
+        return False
 
-    print('Bot', response)
-    await update.message.reply_text(response)
-
-async def error(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    print(f'Update {update} caused error {context.error}')
-
-if __name__ == '__main__':
-    print('Starting bot...')
-    app = Application.builder().token(TOKEN).build()
-
-    # commands
-    app.add_handler(CommandHandler('start', start_command))
-    app.add_handler(CommandHandler('help', help_command))
-    app.add_handler(CommandHandler('custom', custom_command))
-
-    # messages
-    app.add_handler(MessageHandler(filters.TEXT, handle_message))
-
-    # errors
-    app.add_error_handler(error)
-
-    # polls the bot
-    print('Polling...')
-    app.run_polling(poll_interval=3)
+if __name__ == "__main__":
+    success = notify_product("Arc'teryx Beta LT Jacket", 999, "https://example.com/arcteryx")
+    if not success:
+        sys.exit(1)
+ 
