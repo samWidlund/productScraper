@@ -3,7 +3,7 @@ name: Telegram notifyProduct Bot Workflow
 on:
   push:
     branches:
-      - '*'
+      - main
   workflow_dispatch:  
 # schedule:
   # - cron: '*/30 * * * *' # run each 30 minute
