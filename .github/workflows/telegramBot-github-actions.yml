@@ -1,11 +1,13 @@
-name: Python Script Workflow
+name: Telegram notifyProduct Bot Workflow
 
 on:
   push:
     branches:
       - '*'
   workflow_dispatch:  
-
+# schedule:
+  # - cron: '*/30 * * * *' # run each 30 minute
+   
 jobs:
   run-python-script:
     runs-on: ubuntu-latest
