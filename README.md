@@ -15,15 +15,11 @@
 - plick?
 
 # backlog
-- [ ] research
-    - [ ] which platforms support api?
-    - [ ] use user script like selenium?
-    - [ ] web och mobile app?
-- [ ] language
-    - [ ] python backend? 
-    - [ ] react or react native?
-    - [ ] local or online host?
-        - [ ] github actions? 
+- [x] working telegram api bot using python
+- [x] setup github actions
+- [x] working workflow to run the python bot script
+- [ ] begin working with scraping tool
+    - [ ] research - api? selenium? scrapy?
 
 # currently
 - testing around with telegram bot api, just got it working with python script.
