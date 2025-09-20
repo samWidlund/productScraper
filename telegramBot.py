@@ -10,7 +10,7 @@ CHAT_ID = os.getenv("BOT_CHAT_ID")
 
 def notify_product(title, price, url):
     if not TOKEN or not CHAT_ID:
-        print("Fel: TOKEN eller CHAT_ID är inte satta som miljövariabler")
+        print("Fel: TBOT_TOKEN eller BOT_CHAT_ID är inte satta som miljövariabler")
         return False
     
     text = f"🔥 Ny produkt hittad!\n\n{title}\nPris: {price} kr\n{url}"
