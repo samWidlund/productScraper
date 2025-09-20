@@ -3,8 +3,7 @@ name: Python Script Workflow
 on:
   push:
     branches:
-      -new_py
-      -*
+      - main
 
 jobs:
   run-python-script:
