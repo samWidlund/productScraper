@@ -20,6 +20,8 @@
 - [x] working workflow to run the python bot script
 - [ ] begin working with scraping tool
     - [ ] research - api? selenium? scrapy?
+- [ ] input product info in telegram chat -> publish product on platforms?
+    - [ ] ebay API, do the rest semi automatic?
 
 # ideas
 https://github.com/kyleronayne/marketplace-api
