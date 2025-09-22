@@ -1,0 +1,1 @@
+# script to publish products on multiple platforms at once. 
