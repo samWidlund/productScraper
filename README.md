@@ -20,7 +20,8 @@
 - [x] working workflow to run the python bot script
 - [ ] begin working with scraping tool
     - [ ] research - api? selenium? scrapy?
-    - [ ] if product found -> trigger workflow
+    - [ ] run workflow on schedule, if product found -> trigger telegramBot 
+    - [ ] ai to analyze products?
 - [ ] input product info in telegram chat -> publish product on platforms?
     - [ ] ebay API, do the rest semi automatic?
 
@@ -28,3 +29,10 @@
 https://github.com/kyleronayne/marketplace-api
 https://github.com/scrapy/scrapy
 https://github.com/D4Vinci/Scrapling
+
+# get started
+.gitignore file with:
+.env
+__pycache__/
+*.pyc
+*.pyo
