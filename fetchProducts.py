@@ -20,6 +20,6 @@ while runProgram:
     notify = input("Enter true to send message\n").lower()
     print(notify)
     if notify == "true":
-        notify_product("GOOD SHIT!", "500 kr", "https://example.com")
+        notify_product("GOOD SHIT!", "500 kr", "https://example.com") # function to call telegram bot
     if notify == "break":
         runProgram = False 
