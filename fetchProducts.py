@@ -1,25 +1,21 @@
 # script to fetch products form platforms n notify user via telegramBot
 
-# https://github.com/kyleronayne/marketplace-api
-# https://github.com/scrapy/scrapy
-# https://github.com/D4Vinci/Scrapling
+from telegramBot import notify_product # function to notify user
+from ebay_api import EbayAPI
+import config
 
-import requests
-from dotenv import load_dotenv
-from telegramBot import notify_product
+ebay = EbayAPI(
+    client_id=config.EBAY_CLIENT_ID,
+    client_secret=config.EBAY_CLIENT_SECRET,
+    sandbox=config.EBAY_SANDBOX
+)
 
-load_dotenv()
+# search n print result
+products = ebay.search(
+    query="phone",
+    max_price=100000,
+    marketplace='US'
+)
 
-runProgram = True
-notify = "False"
-# json placeholder
-response = requests.get("https://jsonplaceholder.typicode.com/posts/1")
-print("Mock data:", response.json())
-
-while runProgram:
-    notify = input("Enter true to send message\n").lower()
-    print(notify)
-    if notify == "true":
-        notify_product("GOOD SHIT!", "500 kr", "https://example.com") # function to call telegram bot
-    if notify == "break":
-        runProgram = False 
+for product in products:
+    print(f"{product['title']} - {product['price']} {product['currency']}")
