@@ -17,5 +17,6 @@ products = ebay.search(
     marketplace='US'
 )
 
+print("\nproducts found:")
 for product in products:
-    print(f"{product['title']} - {product['price']} {product['currency']}")
+    print(f"{product['title']} - {product['price']} {product['currency']} {product['url']}")
