@@ -31,8 +31,10 @@ https://github.com/scrapy/scrapy
 https://github.com/D4Vinci/Scrapling
 
 # get started
-.gitignore file with:
-.env
-__pycache__/
-*.pyc
-*.pyo
+### .gitignore
+```txt
+    .env
+    __pycache__/
+    *.pyc
+    *.pyo
+```
