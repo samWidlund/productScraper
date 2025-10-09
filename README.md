@@ -38,3 +38,5 @@ https://github.com/D4Vinci/Scrapling
     *.pyc
     *.pyo
 ```
+
+test
