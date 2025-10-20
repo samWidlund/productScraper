@@ -18,9 +18,11 @@
 - [x] working telegram api bot using python
 - [x] setup github actions
 - [x] working workflow to run the python bot script
-- [ ] begin working with scraping tool
+- [x] begin working with scraping tool
+    - [x] woking with Sandbox
+        - [ ] woking with Production
     - [ ] research - api? selenium? scrapy?
-    - [ ] run workflow on schedule, if product found -> trigger telegramBot 
+    - [x] run workflow on schedule, if product found -> trigger telegramBot 
     - [ ] ai to analyze products?
 - [ ] input product info in telegram chat -> publish product on platforms?
     - [ ] ebay API, do the rest semi automatic?
