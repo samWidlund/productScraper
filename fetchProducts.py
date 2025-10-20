@@ -19,4 +19,8 @@ products = ebay.search(
 
 print("\nproducts found:")
 for product in products:
-    print(f"{product['title']} - {product['price']} {product['currency']} {product['url']}")
+    if product['title'].startswith('Kids Smart Phone With 2.8"'):
+        print(f"{product['title']} - {product['price']} {product['currency']} {product['url']}")
+        notify_product(product['title'], product['price'], product['url'])
+
+# notify_product("test", "100", "test.com")
