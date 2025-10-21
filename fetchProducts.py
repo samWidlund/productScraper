@@ -16,7 +16,8 @@ products = ebay.search(
     max_price=100000,
     marketplace='US'
 )
-debug = False
+
+debug = True
 price_cap = 19 # notification is sent to user when found product meets or is below this price
 
 print("\nproducts found:")
