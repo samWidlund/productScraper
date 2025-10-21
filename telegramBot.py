@@ -38,9 +38,3 @@ def notify_product(title, price, url):
     except Exception as e:
         print(f"unexpected error: {e}")
         return False
-
-if __name__ == "__main__":
-    success = notify_product("Arc'teryx Beta LT Jacket", 999, "https://example.com/arcteryx")
-    if not success:
-        sys.exit(1)
- 
