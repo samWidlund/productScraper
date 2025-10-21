@@ -1,6 +1,6 @@
 # script to fetch products form platforms n notify user via telegramBot
 
-from telegramBot import notify_product # function to notify user
+from telegramBot import notify_product
 from ebay_api import EbayAPI
 import config
 
@@ -10,14 +10,13 @@ ebay = EbayAPI(
     sandbox=config.EBAY_SANDBOX
 )
 
-# search n print result
 products = ebay.search(
     query="phone",
     max_price=100000,
     marketplace='US'
 )
 
-debug = True
+debug = False
 price_cap = 19 # notification is sent to user when found product meets or is below this price
 
 print("\nproducts found:")
