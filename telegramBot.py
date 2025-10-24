@@ -16,7 +16,7 @@ def notify_product(title, price, url):
         return False
 
     ## test notification
-    text = f"🚨 Product found! 🚨\n{title}\n{price} sek\n{url}"
+    text = f"🚨 Product found! 🚨\n{title}\n{price} USD\n{url}"
     url_api = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
     ## test notification
     
