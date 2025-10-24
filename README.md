@@ -19,8 +19,11 @@
 - [x] setup github actions
 - [x] working workflow to run the python bot script
 - [x] begin working with scraping tool
-    - [x] woking with Sandbox
-        - [ ] woking with Production
+    - [x] working with Sandbox
+        - [x] working with Production
+        - [ ] working with gh actions
+
+    - [ ] database to save fetched products, prevent twice notice
     - [ ] research - api? selenium? scrapy?
     - [x] run workflow on schedule, if product found -> trigger telegramBot 
     - [ ] ai to analyze products?
@@ -40,5 +43,3 @@ https://github.com/D4Vinci/Scrapling
     *.pyc
     *.pyo
 ```
-
-test
