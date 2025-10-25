@@ -11,13 +11,12 @@ ebay = EbayAPI(
 )
 
 products = ebay.search(
-    query="phone",
-    max_price=100000,
-    marketplace='US'
+    query="arcteryx jacket",
+    max_price=15, # price cap is mentioned twice?
+    marketplace='US' # test change from US
 )
 
 debug = False
-price_cap = 19 # notification is sent to user when found product meets or is below this price
 
 print("\nproducts found:")
 for product in products:
@@ -25,5 +24,5 @@ for product in products:
     if debug: # if set to True, print all products found
         print(f"\n{product['title']} - {product['price']} {product['currency']} {product['url']}")
 
-    if not debug and float(product['price']) <= price_cap:
+    if not debug:
         notify_product(product['title'], product['price'], product['url'])
