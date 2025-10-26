@@ -2,6 +2,7 @@
 
 from telegramBot import notify_product
 from ebay_api import EbayAPI
+from database import add_product, is_new_product
 import config
 
 ebay = EbayAPI(
@@ -13,16 +14,23 @@ ebay = EbayAPI(
 products = ebay.search(
     query="arcteryx jacket",
     max_price=15,
-    marketplace='US' # test change from US
+    marketplace='US'
 )
 
 debug = False
 
-print("\nproducts found:")
+print(f"\nproducts found: {len(products)}")
+
 for product in products:
 
-    if debug: # if set to True, print all products found
-        print(f"\n{product['title']} - {product['price']} {product['currency']} {product['url']}")
-
-    if not debug:
-        notify_product(product['title'], product['price'], product['url'])
+    # add product to db if new
+    if is_new_product(product['id']):
+        add_product(product['id'], product['title'], product['price'], product['url'])
+        
+        # send notification
+        if not debug:
+            notify_product(product['title'], product['price'], product['url'])
+        else:
+            print(f"NY: {product['title']} - {product['price']} {product['currency']}")
+    else:
+        print(f"match in database, product already found: {product['title']}")
