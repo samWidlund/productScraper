@@ -12,7 +12,7 @@ ebay = EbayAPI(
 
 products = ebay.search(
     query="arcteryx jacket",
-    max_price=15, # price cap is mentioned twice?
+    max_price=15,
     marketplace='US' # test change from US
 )
 
