@@ -12,8 +12,8 @@ ebay = EbayAPI(
 )
 
 products = ebay.search(
-    query="arcteryx jacket",
-    max_price=15,
+    query="Arcteryx",
+    max_price=100,
     marketplace='US'
 )
 
