@@ -7,7 +7,7 @@ def add_product(product_id, title, price, url):
     # verify if product exist
     cur.execute("SELECT itemId FROM products WHERE itemId = ?", (product_id,))
     if cur.fetchone():
-        print(f"Produkt {product_id} finns redan")
+        print(f"Product {product_id} already in database")
         con.close()
         return False
     
@@ -16,7 +16,7 @@ def add_product(product_id, title, price, url):
                 (product_id, title, price, url))
     con.commit()
     con.close()
-    print(f"Lade till: {title}")
+    print(f"Added product to database: {title}")
     return True
 
 def is_new_product(product_id):
