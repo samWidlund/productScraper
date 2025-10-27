@@ -1,7 +1,7 @@
 import sqlite3
 
 def add_product(product_id, title, price, url):
-    con = sqlite3.connect('found_items.db')
+    con = sqlite3.connect('ebay_found_items.db')
     cur = con.cursor()
     
     # verify if product exist
@@ -22,7 +22,7 @@ def add_product(product_id, title, price, url):
 def is_new_product(product_id):
     
     # verify if product already is found
-    con = sqlite3.connect('found_items.db')
+    con = sqlite3.connect('ebay_found_items.db')
     cur = con.cursor()
     cur.execute("SELECT itemId FROM products WHERE itemId = ?", (product_id,))
     result = cur.fetchone() is None

@@ -1,4 +1,10 @@
+# enviroment variables
 .env
+
+# python
 __pycache__/
 *.pyc
 *.pyo
+
+# database
+*.sqbpro
