@@ -21,7 +21,7 @@
 - [x] begin working with scraping tool
     - [x] working with Sandbox
         - [x] working with Production
-        - [ ] working with gh actions
+        - [x] working with gh actions
 
     - [ ] database to save fetched products, prevent twice notice
     - [ ] research - api? selenium? scrapy?
