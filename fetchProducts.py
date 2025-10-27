@@ -2,7 +2,7 @@
 
 from telegramBot import notify_product
 from ebay_api import EbayAPI
-from database import add_product, is_new_product
+from database.database import add_product, is_new_product
 import config
 
 ebay = EbayAPI(
