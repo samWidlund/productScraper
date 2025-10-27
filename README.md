@@ -18,12 +18,28 @@
 - [x] working telegram api bot using python
 - [x] setup github actions
 - [x] working workflow to run the python bot script
-- [ ] begin working with scraping tool
-    - [ ] research - api? selenium? scrapy?
+- [x] begin working with scraping tool
+    - [x] working with Sandbox
+        - [x] working with Production
+        - [ ] working with gh actions
 
-# currently
-- testing around with telegram bot api, just got it working with python script.
-- dotenv does not work with github actions?
+    - [ ] database to save fetched products, prevent twice notice
+    - [ ] research - api? selenium? scrapy?
+    - [x] run workflow on schedule, if product found -> trigger telegramBot 
+    - [ ] ai to analyze products?
+- [ ] input product info in telegram chat -> publish product on platforms?
+    - [ ] ebay API, do the rest semi automatic?
+
+# ideas
+https://github.com/kyleronayne/marketplace-api
+https://github.com/scrapy/scrapy
+https://github.com/D4Vinci/Scrapling
 
 # get started
-
+### .gitignore
+```txt
+    .env
+    __pycache__/
+    *.pyc
+    *.pyo
+```

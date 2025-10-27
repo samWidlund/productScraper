@@ -29,5 +29,5 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt      
       
-      - name: Run Python script
+      - name: Run telegramBot.py script
         run: python telegramBot.py
