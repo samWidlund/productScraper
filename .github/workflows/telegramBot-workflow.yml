@@ -29,7 +29,21 @@ jobs:
           cache: 'pip'
       
       - name: Install dependencies
-        run: pip install -r requirements.txt      
+        run: pip install -r requirements.txt
+      
+      - name: Download database artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: database
+          path: database/
+        continue-on-error: true
       
       - name: Run fetchProducts.py script
         run: python fetchProducts.py
+      
+      - name: Upload database artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: database
+          path: database/ebay_found_items.db
+          retention-days: 90

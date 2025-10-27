@@ -1,6 +1,25 @@
 import sqlite3
 import os
 
+def init_database():
+    """initialize the database and create table if it doesn't exist"""
+    db_path = os.path.join(os.path.dirname(__file__), 'ebay_found_items.db')
+    con = sqlite3.connect(db_path)
+    cur = con.cursor()
+
+    cur.execute('''
+        CREATE TABLE IF NOT EXISTS products (
+            itemId TEXT PRIMARY KEY,
+            title TEXT NOT NULL,
+            price TEXT NOT NULL,
+            url TEXT NOT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+    ''')
+    
+    con.commit()
+    con.close()
+
 def add_product(product_id, title, price, url):
     db_path = os.path.join(os.path.dirname(__file__), 'ebay_found_items.db')
     con = sqlite3.connect(db_path)
