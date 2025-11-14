@@ -31,7 +31,7 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
       
-      - name: Download database artifact
+      - name: Download database artifact # detta funkar inte?????? den hittar inte artifakten
         uses: actions/download-artifact@v4
         with:
           name: database
