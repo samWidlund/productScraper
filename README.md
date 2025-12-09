@@ -24,6 +24,7 @@
         - [x] working with gh actions
 
     - [ ] database to save fetched products, prevent twice notice
+        - [ ] database function working on gh actions
     - [ ] research - api? selenium? scrapy?
     - [x] run workflow on schedule, if product found -> trigger telegramBot 
     - [ ] ai to analyze products?
