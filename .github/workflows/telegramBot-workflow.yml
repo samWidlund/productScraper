@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+
   workflow_dispatch:  
 # schedule:
   # - cron: '*/30 * * * *' # run each 30 minute
@@ -35,7 +36,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: database
-          path: database/
+          path: database/ebay_found_items.db
         continue-on-error: true
       
       - name: Run fetchProducts.py script
