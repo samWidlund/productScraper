@@ -29,22 +29,20 @@ jobs:
           python-version: '3.10'
           cache: 'pip'
       
-      - name: Install dependencies
-        run: pip install -r requirements.txt
-      
-      - name: Download database artifact # detta funkar inte?????? den hittar inte artifakten
-        uses: actions/download-artifact@v4
+      - name: Restore database cache
+        uses: actions/cache@v4
         with:
-          name: database
           path: database/ebay_found_items.db
-        continue-on-error: true
-      
-      - name: Run fetchProducts.py script
+          key: ebay-db-cache
+  
+      - name: Ensure database directory exists
+        run: mkdir -p database
+  
+      - name: Run fetchProducts.py
         run: python fetchProducts.py
-      
-      - name: Upload database artifact
-        uses: actions/upload-artifact@v4
+  
+      - name: Save database cache
+        uses: actions/cache@v4
         with:
-          name: database
           path: database/ebay_found_items.db
-          retention-days: 90
+          key: ebay-db-cache
