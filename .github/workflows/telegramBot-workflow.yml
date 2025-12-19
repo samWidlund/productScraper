@@ -10,7 +10,7 @@ on:
   # - cron: '*/30 * * * *' # run each 30 minute
    
 jobs:
-  run-python-script:
+  fetch-products:
     runs-on: ubuntu-latest
     environment: telegramApi
     env:
