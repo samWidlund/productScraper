@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+
   workflow_dispatch:  
 # schedule:
   # - cron: '*/30 * * * *' # run each 30 minute
@@ -31,19 +32,20 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
       
-      - name: Download database artifact # detta funkar inte?????? den hittar inte artifakten
-        uses: actions/download-artifact@v4
+      - name: Restore database cache
+        uses: actions/cache@v4
         with:
-          name: database
-          path: database/
-        continue-on-error: true
-      
-      - name: Run fetchProducts.py script
-        run: python fetchProducts.py
-      
-      - name: Upload database artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: database
           path: database/ebay_found_items.db
-          retention-days: 90
+          key: ebay-db-cache
+  
+      - name: Ensure database directory exists
+        run: mkdir -p database
+  
+      - name: Run fetchProducts.py
+        run: python fetchProducts.py
+  
+      - name: Save database cache
+        uses: actions/cache@v4
+        with:
+          path: database/ebay_found_items.db
+          key: ebay-db-cache
