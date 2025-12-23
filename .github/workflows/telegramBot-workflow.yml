@@ -32,14 +32,16 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
       
+      - name: Ensure database directory exists
+        run: mkdir -p database
+  
       - name: Restore database cache
         uses: actions/cache@v4
         with:
           path: database/ebay_found_items.db
-          key: ebay-db-cache
-  
-      - name: Ensure database directory exists
-        run: mkdir -p database
+          key: ebay-db-cache-${{ runner.os }}
+          restore-keys: |
+            ebay-db-cache-${{ runner.os }}
   
       - name: Run fetchProducts.py
         run: python fetchProducts.py
@@ -48,4 +50,6 @@ jobs:
         uses: actions/cache@v4
         with:
           path: database/ebay_found_items.db
-          key: ebay-db-cache
+          key: ebay-db-cache-${{ runner.os }}
+          restore-keys: |
+            ebay-db-cache-${{ runner.os }}

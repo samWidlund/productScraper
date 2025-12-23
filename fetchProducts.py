@@ -27,12 +27,14 @@ for product in products:
 
     # add product to db if new
     if is_new_product(product['id']):
-        add_product(product['id'], product['title'], product['price'], product['url'])
-        
-        # send notification
-        if not debug:
-            notify_product(product['title'], product['price'], product['url'])
+        # Try to add product first, only notify if successfully added
+        if add_product(product['id'], product['title'], product['price'], product['url']):
+            # send notification
+            if not debug:
+                notify_product(product['title'], product['price'], product['url'])
+            else:
+                print(f"NY: {product['title']} - {product['price']} {product['currency']}")
         else:
-            print(f"NY: {product['title']} - {product['price']} {product['currency']}")
+            print(f"Failed to add product to database: {product['title']}")
     else:
         print(f"match in database, product already found: {product['title']}")
