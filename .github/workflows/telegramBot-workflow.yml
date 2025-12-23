@@ -6,8 +6,8 @@ on:
       - main
 
   workflow_dispatch:  
-  # schedule:
-  #   - cron: '*/30 * * * *' # run each 30 minute
+  schedule:
+    - cron: '*/30 * * * *' # run each 30 minute
    
 jobs:
   fetch-products:
