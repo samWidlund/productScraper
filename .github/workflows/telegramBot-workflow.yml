@@ -18,6 +18,7 @@ jobs:
       BOT_CHAT_ID: ${{ secrets.BOT_CHAT_ID }}
       EBAY_CLIENT_ID: ${{ secrets.EBAY_CLIENT_ID }}
       EBAY_CLIENT_SECRET: ${{ secrets.EBAY_CLIENT_SECRET }}
+      APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
     
     steps:
       - name: Checkout code
@@ -43,8 +44,11 @@ jobs:
           restore-keys: |
             ebay-db-cache-${{ runner.os }}
   
-      - name: Run fetchProducts.py
-        run: python fetchProducts.py
+      # - name: Run fetchProducts.py
+      #   run: python fetchProducts.py
+      
+      - name: Run fetch_fbMarketplace.py
+        run: python fetch_fbMarketplace.py
   
       - name: Save database cache
         uses: actions/cache@v4
