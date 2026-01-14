@@ -37,14 +37,21 @@ jobs:
       - name: Ensure database directory exists
         run: mkdir -p database
   
+      - name: Create empty database if it doesn't exist
+        run: |
+          if [ ! -f database/ebay_found_items.db ]; then
+            touch database/ebay_found_items.db
+          fi
+  
       - name: Restore database cache
+        id: cache-db
         uses: actions/cache@v4
         with:
           path: database/ebay_found_items.db
-          # Allow restore from a stable prefix, but do not block saving updates
-          key: ebay-db-cache-${{ runner.os }}-${{ github.run_id }}
+          key: ebay-db-${{ runner.os }}-${{ github.ref }}-${{ hashFiles('database/ebay_found_items.db') }}
           restore-keys: |
-            ebay-db-cache-${{ runner.os }}
+            ebay-db-${{ runner.os }}-${{ github.ref }}-
+            ebay-db-${{ runner.os }}-
   
       # - name: Run fetchProducts.py
       #   run: python fetchProducts.py
@@ -53,10 +60,11 @@ jobs:
         run: python fetch_fbMarketplace.py
   
       - name: Save database cache
+        if: always()
         uses: actions/cache@v4
         with:
           path: database/ebay_found_items.db
-          # Save a new cache entry for this run so new items persist
-          key: ebay-db-cache-${{ runner.os }}-${{ github.run_id }}
+          key: ebay-db-${{ runner.os }}-${{ github.ref }}-${{ hashFiles('database/ebay_found_items.db') }}
           restore-keys: |
-            ebay-db-cache-${{ runner.os }}
+            ebay-db-${{ runner.os }}-${{ github.ref }}-
+            ebay-db-${{ runner.os }}-
