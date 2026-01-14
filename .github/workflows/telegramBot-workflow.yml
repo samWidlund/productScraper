@@ -41,7 +41,8 @@ jobs:
         uses: actions/cache@v4
         with:
           path: database/ebay_found_items.db
-          key: ebay-db-cache-${{ runner.os }}
+          # Allow restore from a stable prefix, but do not block saving updates
+          key: ebay-db-cache-${{ runner.os }}-${{ github.run_id }}
           restore-keys: |
             ebay-db-cache-${{ runner.os }}
   
@@ -55,6 +56,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: database/ebay_found_items.db
-          key: ebay-db-cache-${{ runner.os }}
+          # Save a new cache entry for this run so new items persist
+          key: ebay-db-cache-${{ runner.os }}-${{ github.run_id }}
           restore-keys: |
             ebay-db-cache-${{ runner.os }}
