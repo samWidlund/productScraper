@@ -7,8 +7,8 @@ on:
       - fetch_fb-marketplace
 
   workflow_dispatch:  
-  # schedule:
-  #   - cron: '*/30 * * * *' # run each 30 minute
+  schedule:
+    - cron: '0 * * * *' # run each 30 minute
    
 jobs:
   fetch-products:
