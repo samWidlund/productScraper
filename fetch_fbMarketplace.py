@@ -42,7 +42,7 @@ for item in client.dataset(run["defaultDatasetId"]).iterate_items():
     else:
         print(f"match in database, product already found: {item['marketplace_listing_title']}")
 
-# write output to json file for debug
-with open("output/fb_marketplace.json", "w") as f:
-    json.dump(items, f, indent=4)
+## UNCOMMENT TO DEBUG ## 
+# with open("output/fb_marketplace.json", "w") as f:
+#     json.dump(items, f, indent=4)
 
