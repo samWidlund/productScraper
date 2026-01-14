@@ -9,3 +9,6 @@ __pycache__/
 # database
 *.sqbpro
 *.db
+
+# debug
+output/

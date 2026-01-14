@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - fetch_fb-marketplace
 
   workflow_dispatch:  
   # schedule:
@@ -18,10 +19,11 @@ jobs:
       BOT_CHAT_ID: ${{ secrets.BOT_CHAT_ID }}
       EBAY_CLIENT_ID: ${{ secrets.EBAY_CLIENT_ID }}
       EBAY_CLIENT_SECRET: ${{ secrets.EBAY_CLIENT_SECRET }}
+      APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
     
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v5 
@@ -35,21 +37,34 @@ jobs:
       - name: Ensure database directory exists
         run: mkdir -p database
   
+      - name: Create empty database if it doesn't exist
+        run: |
+          if [ ! -f database/ebay_found_items.db ]; then
+            touch database/ebay_found_items.db
+          fi
+  
       - name: Restore database cache
+        id: cache-db
         uses: actions/cache@v4
         with:
           path: database/ebay_found_items.db
-          key: ebay-db-cache-${{ runner.os }}
+          key: ebay-db-${{ runner.os }}-${{ github.ref }}-${{ hashFiles('database/ebay_found_items.db') }}
           restore-keys: |
-            ebay-db-cache-${{ runner.os }}
+            ebay-db-${{ runner.os }}-${{ github.ref }}-
+            ebay-db-${{ runner.os }}-
   
-      - name: Run fetchProducts.py
-        run: python fetchProducts.py
+      # - name: Run fetchProducts.py
+      #   run: python fetchProducts.py
+      
+      - name: Run fetch_fbMarketplace.py
+        run: python fetch_fbMarketplace.py
   
       - name: Save database cache
+        if: always()
         uses: actions/cache@v4
         with:
           path: database/ebay_found_items.db
-          key: ebay-db-cache-${{ runner.os }}
+          key: ebay-db-${{ runner.os }}-${{ github.ref }}-${{ hashFiles('database/ebay_found_items.db') }}
           restore-keys: |
-            ebay-db-cache-${{ runner.os }}
+            ebay-db-${{ runner.os }}-${{ github.ref }}-
+            ebay-db-${{ runner.os }}-
