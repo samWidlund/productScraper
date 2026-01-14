@@ -15,19 +15,9 @@
 - plick?
 
 # backlog
-- [x] working telegram api bot using python
-- [x] setup github actions
-- [x] working workflow to run the python bot script
-- [x] begin working with scraping tool
-    - [x] working with Sandbox
-        - [x] working with Production
-        - [x] working with gh actions
-
-    - [ ] database to save fetched products, prevent twice notice
-        - [ ] database function working on gh actions
-    - [ ] research - api? selenium? scrapy?
-    - [x] run workflow on schedule, if product found -> trigger telegramBot 
+    - [ ] fetch fb marketplace
     - [ ] ai to analyze products?
+    - [ ] research - api? selenium? scrapy?
 - [ ] input product info in telegram chat -> publish product on platforms?
     - [ ] ebay API, do the rest semi automatic?
 
