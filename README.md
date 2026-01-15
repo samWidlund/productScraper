@@ -15,9 +15,11 @@
 - plick?
 
 # backlog
-    - [ ] fetch fb marketplace
-    - [ ] ai to analyze products?
-    - [ ] research - api? selenium? scrapy?
+- [ ] gh actions workflow
+    - [ ] git commit + jsonfile/db method? commit via workflow?
+- [ ] fetch fb marketplace
+- [ ] ai to analyze products?
+- [ ] research - api? selenium? scrapy?
 - [ ] input product info in telegram chat -> publish product on platforms?
     - [ ] ebay API, do the rest semi automatic?
 
