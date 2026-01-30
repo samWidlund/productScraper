@@ -39,13 +39,19 @@ jobs:
       
       - name: Run writeJson.py
         run: python writeJson.py
-        
-      - name: 'Upload Artifact'
-        uses: actions/upload-artifact@v4
+
+      - uses: actions/download-artifact@v5
         with:
           name: my-artifact
-          path: my_file.json
-          retention-days: 5
+      - name: Display structure of downloaded files
+        run: ls -R
+        
+      # - name: 'Upload Artifact'
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: my-artifact
+      #     path: my_file.json
+      #     retention-days: 5
           
       # - name: Run fetchProducts.py
       #   run: python fetchProducts.py
