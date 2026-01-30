@@ -16,9 +16,9 @@ response = requests.post(
         "Prefer": "resolution=merge-duplicates"
     },
     json={
-        "itemid": "asdasd",
-        "title": "test2",
-        "price": "10230132",
+        "itemid": "1231313231",
+        "title": "Arcteryx beta lt jacket",
+        "price": "2999",
         "url": "facebook.com"
     }
 )
