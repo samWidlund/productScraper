@@ -38,15 +38,4 @@ jobs:
         env:
           SUPABASE_URL: ${{ secrets.URL_SUPABASE }}
           SUPABASE_KEY: ${{ secrets.DB_TOKEN }}
-        run: |
-          curl -X POST "${SUPABASE_URL}/rest/v1/products" \
-            -H "apikey: ${SUPABASE_KEY}" \
-            -H "Authorization: Bearer ${SUPABASE_KEY}" \
-            -H "Content-Type: application/json" \
-            -H "Prefer: return=representation" \
-            -d '{
-              "itemid": "ABC123",
-              "title": "Example Product",
-              "price": "299 kr",
-              "url": "https://example.com/product"
-            }'
+        run: python database/database.py
