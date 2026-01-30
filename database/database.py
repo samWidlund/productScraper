@@ -1,12 +1,12 @@
 import requests
 import os
-from dotenv import load_dotenv
 
-load_dotenv()
-supabase_key = os.getenv('DB_TOKEN')
-supabase_url = os.getenv('URL_SUPABASE')
+supabase_key = os.environ.get('DB_TOKEN')
+supabase_url = os.environ.get('URL_SUPABASE')
 
-# När du hittar en ny produkt:
+if not supabase_key or not supabase_url:
+    raise ValueError("Missing supabase_key or supabase_url environment variables")
+
 response = requests.post(
     f"{supabase_url}/rest/v1/products",
     headers={
