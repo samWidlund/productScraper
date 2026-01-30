@@ -1,8 +1,8 @@
 import requests
 import os
 
-supabase_key = os.environ.get('DB_TOKEN')
-supabase_url = os.environ.get('URL_SUPABASE')
+supabase_key = os.environ.get('SUPABASE_KEY')
+supabase_url = os.environ.get('SUPABASE_URL')
 
 if not supabase_key or not supabase_url:
     raise ValueError("Missing supabase_key or supabase_url environment variables")
