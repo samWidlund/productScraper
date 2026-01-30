@@ -40,45 +40,49 @@ jobs:
       - name: Run writeJson.py
         run: python writeJson.py
 
-      # - name: 'Upload Artifact'
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: my-artifact
-      #     path: my_file.json
-      #     retention-days: 5
-
-      - name: Get previous successful run id
-        id: prev
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const runs = await github.rest.actions.listWorkflowRuns({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              workflow_id: 'telegramBot-workflow.yml',
-              status: 'success',
-              per_page: 5
-            })
-
-            const previousRun = runs.data.workflow_runs
-              .find(run => run.id !== context.runId)
-
-            if (!previousRun) {
-              core.setFailed("No previous successful run found")
-            }
-
-            return previousRun.id
-
-      - name: Download artifact from previous run
-        uses: actions/download-artifact@v4
-        with:
-          run-id: ${{ steps.prev.outputs.result }}
-          name: my-artifact
-          path: ./prev-artifact      
-          
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v4
         with:
           name: my-artifact
-          path: ./prev-artifact
+          path: my_file.json
           retention-days: 5
+
+      # - name: Get previous successful run id
+      #   id: prev
+      #   uses: actions/github-script@v7
+      #   with:
+      #     script: |
+      #       const runs = await github.rest.actions.listWorkflowRuns({
+      #         owner: context.repo.owner,
+      #         repo: context.repo.repo,
+      #         workflow_id: 'telegramBot-workflow.yml',
+      #         status: 'success',
+      #         per_page: 5
+      #       })
+
+      #       const previousRun = runs.data.workflow_runs
+      #         .find(run => run.id !== context.runId)
+
+      #       if (!previousRun) {
+      #         core.setFailed("No previous successful run found")
+      #       }
+
+      #       return previousRun.id
+            
+
+      - name: Debug previous run
+        run: 'echo "Previous run id: ${{ steps.prev.outputs.result }}"'
+
+      # - name: Download artifact from previous run
+      #   uses: actions/download-artifact@v4
+      #   with:
+      #     run-id: ${{ steps.prev.outputs.result }}
+      #     name: my-artifact
+      #     path: ./prev-artifact      
+
+      # - name: 'Upload Artifact'
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: my-artifact
+      #     path: ./prev-artifact
+      #     retention-days: 5
