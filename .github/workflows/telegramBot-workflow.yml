@@ -29,41 +29,23 @@ jobs:
         with:
           python-version: '3.10'
           cache: 'pip'
-      
+
       - name: Install dependencies
         run: pip install -r requirements.txt
       
       - name: Ensure database directory exists
         run: mkdir -p database
   
-      - name: Create empty database if it doesn't exist
-        run: |
-          if [ ! -f database/ebay_found_items.db ]; then
-            touch database/ebay_found_items.db
-          fi
-  
-      - name: Restore database cache
-        id: cache-db
-        uses: actions/cache@v4
-        with:
-          path: database/ebay_found_items.db
-          key: ebay-db-${{ runner.os }}-${{ github.ref }}-${{ hashFiles('database/ebay_found_items.db') }}
-          restore-keys: |
-            ebay-db-${{ runner.os }}-${{ github.ref }}-
-            ebay-db-${{ runner.os }}-
-  
       # - name: Run fetchProducts.py
       #   run: python fetchProducts.py
       
-      - name: Run fetch_fbMarketplace.py
-        run: python fetch_fbMarketplace.py
-  
-      - name: Save database cache
-        if: always()
-        uses: actions/cache@v4
+      # - name: Run fetch_fbMarketplace.py
+      #   run: python fetch_fbMarketplace.py
+
+      - name: 'Upload Artifact'
+        uses: actions/upload-artifact@v4
         with:
-          path: database/ebay_found_items.db
-          key: ebay-db-${{ runner.os }}-${{ github.ref }}-${{ hashFiles('database/ebay_found_items.db') }}
-          restore-keys: |
-            ebay-db-${{ runner.os }}-${{ github.ref }}-
-            ebay-db-${{ runner.os }}-
+          name: my-artifact
+          path: my_file.txt
+          retention-days: 5
+
