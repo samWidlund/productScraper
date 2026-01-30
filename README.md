@@ -22,6 +22,7 @@
 - plick?
 
 # backlog
+- [ ] remove old supabase gh secrets
 - [x] fetch fb marketplace
 - [x] setup supabase and save products in cloud database
     - [ ] currenly only working with static information, connect with product fetch script
