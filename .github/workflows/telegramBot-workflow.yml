@@ -75,10 +75,10 @@ jobs:
           run-id: ${{ steps.prev.outputs.result }}
           name: my-artifact
           path: ./prev-artifact      
-
+          
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v4
         with:
           name: my-artifact
-          path: ./prev-artifact/my_file.json
+          path: ./prev-artifact
           retention-days: 5
