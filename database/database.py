@@ -1,52 +1,24 @@
-import sqlite3
+import requests
 import os
+from dotenv import load_dotenv
 
-def init_database():
-    """initialize the database and create table if it doesn't exist"""
-    db_path = os.path.join(os.path.dirname(__file__), 'ebay_found_items.db')
-    con = sqlite3.connect(db_path)
-    cur = con.cursor()
+load_dotenv()
+supabase_key = os.getenv('DB_TOKEN')
+supabase_url = os.getenv('URL_SUPABASE')
 
-    cur.execute('''
-        CREATE TABLE IF NOT EXISTS products (
-            itemId TEXT PRIMARY KEY,
-            title TEXT NOT NULL,
-            price TEXT NOT NULL,
-            url TEXT NOT NULL,
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-        )
-    ''')
-    
-    con.commit()
-    con.close()
-
-def add_product(product_id, title, price, url):
-    db_path = os.path.join(os.path.dirname(__file__), 'ebay_found_items.db')
-    con = sqlite3.connect(db_path)
-    cur = con.cursor()
-    
-    # verify if product exist
-    cur.execute("SELECT itemId FROM products WHERE itemId = ?", (product_id,))
-    if cur.fetchone():
-        print(f"Product {product_id} already in database")
-        con.close()
-        return False
-    
-    # add product
-    cur.execute("INSERT INTO products (itemId, title, price, url) VALUES (?, ?, ?, ?)", 
-                (product_id, title, price, url))
-    con.commit()
-    con.close()
-    print(f"Added product to database: {title}")
-    return True
-
-def is_new_product(product_id):
-    
-    # verify if product already is found
-    db_path = os.path.join(os.path.dirname(__file__), 'ebay_found_items.db')
-    con = sqlite3.connect(db_path)
-    cur = con.cursor()
-    cur.execute("SELECT itemId FROM products WHERE itemId = ?", (product_id,))
-    result = cur.fetchone() is None
-    con.close()
-    return result
+# När du hittar en ny produkt:
+response = requests.post(
+    f"{supabase_url}/rest/v1/products",
+    headers={
+        "apikey": supabase_key,
+        "Authorization": f"Bearer {supabase_key}",
+        "Content-Type": "application/json",
+        "Prefer": "resolution=merge-duplicates"
+    },
+    json={
+        "itemid": "test123",
+        "title": "arawdaw",
+        "price": "999",
+        "url": "google.com"
+    }
+)
