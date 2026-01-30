@@ -20,7 +20,9 @@ jobs:
       EBAY_CLIENT_ID: ${{ secrets.EBAY_CLIENT_ID }}
       EBAY_CLIENT_SECRET: ${{ secrets.EBAY_CLIENT_SECRET }}
       APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
-    
+      SUPABASE_URL: ${{ secrets.URL_SUPABASE }}
+      SUPABASE_KEY: ${{ secrets.DB_TOKEN }}
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -33,9 +35,15 @@ jobs:
 
       - name: Install dependencies
         run: pip install -r requirements.txt
-
-      - name: Insert product
+        
+      - name: Debug environment variables
+        run: |
+          echo "SUPABASE_URL length: ${#SUPABASE_URL}"
+          echo "SUPABASE_KEY length: ${#SUPABASE_KEY}"
+          echo "SUPABASE_URL starts with: ${SUPABASE_URL:0:8}"
         env:
           SUPABASE_URL: ${{ secrets.URL_SUPABASE }}
           SUPABASE_KEY: ${{ secrets.DB_TOKEN }}
+  
+      - name: Insert product
         run: python database/database.py
