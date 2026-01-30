@@ -33,50 +33,20 @@ jobs:
 
       - name: Install dependencies
         run: pip install -r requirements.txt
-      
-      - name: Ensure database directory exists
-        run: mkdir -p database
-      
-      - name: Run writeJson.py
-        run: python writeJson.py
 
-      # - name: 'Upload Artifact'
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: my-artifact
-      #     path: my_file.json
-      #     retention-days: 5
-
-      - name: Get previous workflow run
-        id: prev
-        uses: actions/github-script@v6
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const runs = await github.actions.listWorkflowRuns({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              workflow_id: 'telegramBot-workflow.yml',
-              branch: 'fix/refactor_workflow',
-              status: 'completed',
-              per_page: 2
-            });
-            const previousRun = runs.data.workflow_runs.find(run => run.id !== context.runId);
-            return previousRun ? previousRun.id : null;
-
-      - name: Debug previous run
-        run: 'echo "Previous run id: ${{ steps.prev.outputs.result }}"'
-
-      - name: Download artifact from previous run
-        uses: actions/download-artifact@v4
-        with:
-          run-id: ${{ steps.prev.outputs.result }}
-          name: my-artifact
-          path: ./prev-artifact
-
-      - name: 'Upload Artifact'
-        uses: actions/upload-artifact@v4
-        with:
-          name: my-artifact
-          path: ./prev-artifact
-          retention-days: 5
+      - name: Insert product
+        env:
+          SUPABASE_URL: ${{ secrets.URL_SUPABASE }}
+          SUPABASE_KEY: ${{ secrets.DB_TOKEN }}
+        run: |
+          curl -X POST "${SUPABASE_URL}/rest/v1/products" \
+            -H "apikey: ${SUPABASE_KEY}" \
+            -H "Authorization: Bearer ${SUPABASE_KEY}" \
+            -H "Content-Type: application/json" \
+            -H "Prefer: return=representation" \
+            -d '{
+              "itemId": "ABC123",
+              "title": "Example Product",
+              "price": "299 kr",
+              "url": "https://example.com/product"
+            }'
