@@ -5,6 +5,13 @@
 - ADDITIONAL, insert info about product -> auto fill account form? 
 - ADDITIONAL, insert info about product -> upload product on multiple platforms at once
 
+## Setup
+- python
+- epay API
+- apify facebook scraper API
+- supabase cloud database
+- github actions
+
 ## platforms 
 - facebook Marketplace
 - facebook 
