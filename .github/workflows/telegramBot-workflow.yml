@@ -45,7 +45,7 @@ jobs:
             -H "Content-Type: application/json" \
             -H "Prefer: return=representation" \
             -d '{
-              "itemId": "ABC123",
+              "itemid": "ABC123",
               "title": "Example Product",
               "price": "299 kr",
               "url": "https://example.com/product"
