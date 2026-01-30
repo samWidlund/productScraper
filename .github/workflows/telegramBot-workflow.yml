@@ -55,7 +55,7 @@ jobs:
             const runs = await github.rest.actions.listWorkflowRuns({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              workflow_id: context.workflow,
+              workflow_id: ''telegram-notify.yml',
               status: 'success',
               per_page: 5
             })
