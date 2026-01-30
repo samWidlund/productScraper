@@ -15,11 +15,10 @@
 - plick?
 
 # backlog
-- [ ] gh actions workflow
-    - [ ] git commit + jsonfile/db method? commit via workflow?
-- [ ] fetch fb marketplace
+- [x] fetch fb marketplace
+- [x] setup supabase and save products in cloud database
+    - [ ] currenly only working with static information, connect with product fetch script
 - [ ] ai to analyze products?
-- [ ] research - api? selenium? scrapy?
 - [ ] input product info in telegram chat -> publish product on platforms?
     - [ ] ebay API, do the rest semi automatic?
 
