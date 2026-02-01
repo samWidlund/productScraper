@@ -10,4 +10,4 @@ __pycache__/
 *.sqbpro
 
 # debug
-output/
+debug/
