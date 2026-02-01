@@ -9,8 +9,7 @@ load_dotenv()
 APIFY_TOKEN=os.getenv("APIFY_TOKEN")
 client = ApifyClient(APIFY_TOKEN)
 
-init_database()
-
+# define actor input
 run_input = {
     "startUrls": [
         { "url": "https://www.facebook.com/marketplace/110976692260411/search?query=arcteryx" }, # arcteryx in sweden
@@ -26,7 +25,10 @@ debug = False
 # fetch produkts n notify
 items = [] # debug
 for item in client.dataset(run["defaultDatasetId"]).iterate_items():
-    items.append(item) # debug
-
-    # add product to database
     add_product(item['id'], item['marketplace_listing_title'], item['listing_price']['amount'], item['listingUrl'])
+
+    # notify user
+
+    # check if product is already found, then not notify? think the add_product does not add duplicates anyway, but the notification part must be modified
+    # items.append(item) # debug
+
