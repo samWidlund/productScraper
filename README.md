@@ -22,7 +22,6 @@
 - plick?
 
 # backlog
-- [ ] remove old supabase gh secrets
 - [ ] increase safety supabase database
     - [x] enable RLS
     - [ ] add rls policies to access db, owner_id?
