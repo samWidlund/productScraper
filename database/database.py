@@ -18,6 +18,7 @@ class SupabaseClient:
 
     def add_product(self, itemid: str, title: str, price: float, url: str):
 
+        # authentication for database, does not work currently
         user = supabase.auth.get_user()  
         user_id =  user['data']['user']['id']
         # det funkade innan jag lade till rls, måste lösa med owner_id nu
