@@ -15,10 +15,9 @@ def notify_product(title, price, url):
         print("error: BOT_TOKEN or BOT_CHAT_ID could not be found as environment variables")
         return False
 
-    ## test notification
+    # telegram message
     text = f"🚨 Product found! 🚨\n{title}\n{price}\n{url}"
     url_api = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
-    ## test notification
     
     try:
         r = requests.post(url_api, data={"chat_id": CHAT_ID, "text": text}, timeout=10)
