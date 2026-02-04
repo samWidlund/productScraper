@@ -13,7 +13,7 @@
 - github actions
 
 ## platforms 
-- [x] facebook Marketplace
+- [x]facebook Marketplace - working
 - [ ]facebook 
 - [x]ebay
 - [ ]tradera
@@ -22,9 +22,9 @@
 - [ ]plick?
 
 # backlog
-- [ ] update workflow file
+- [ ] make sure prints in workflow when notification is sent
 - [ ] ai to analyze products?
-- [ ] input product info in telegram chat -> publish product on platforms?
+- [ ] input product info in telegram chat/web app -> publish product on platforms?
     - [ ] ebay API, do the rest semi automatic?
 
 # ideas
