@@ -19,8 +19,8 @@ jobs:
       EBAY_CLIENT_ID: ${{ secrets.EBAY_CLIENT_ID }}
       EBAY_CLIENT_SECRET: ${{ secrets.EBAY_CLIENT_SECRET }}
       APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
-      SUPABASE_URL: ${{ secrets.URL_SUPABASE }}
-      SUPABASE_KEY: ${{ secrets.DB_TOKEN }}
+      SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+      SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
       SUPABASE_EMAIL: ${{ secrets.SUPABASE_EMAIL }}
       SUPABASE_PASSWORD: ${{ secrets.SUPABASE_PASSWORD }}
     steps:
