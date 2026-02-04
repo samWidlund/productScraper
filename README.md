@@ -13,21 +13,16 @@
 - github actions
 
 ## platforms 
-- facebook Marketplace
-- facebook 
-- ebay
-- tradera
-- blocket
-- vinted?
-- plick?
+- [x] facebook Marketplace
+- [ ]facebook 
+- [x]ebay
+- [ ]tradera
+- [ ]blocket
+- [ ]vinted?
+- [ ]plick?
 
 # backlog
-- [ ] increase safety supabase database
-    - [x] enable RLS
-    - [ ] add rls policies to access db, owner_id?
-- [x] fetch fb marketplace
-- [x] setup supabase and save products in cloud database
-    - [ ] currenly only working with static information, connect with product fetch script
+- [ ] update workflow file
 - [ ] ai to analyze products?
 - [ ] input product info in telegram chat -> publish product on platforms?
     - [ ] ebay API, do the rest semi automatic?
@@ -36,10 +31,8 @@
 https://github.com/kyleronayne/marketplace-api
 https://github.com/scrapy/scrapy
 https://github.com/D4Vinci/Scrapling
-https://console.apify.com/
 
 # problems
-- apify maximized plan? not free? 5 euro?
 
 # get started
 ### .gitignore
