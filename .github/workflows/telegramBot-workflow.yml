@@ -21,9 +21,8 @@ jobs:
       APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
       SUPABASE_URL: ${{ secrets.URL_SUPABASE }}
       SUPABASE_KEY: ${{ secrets.DB_TOKEN }}
-      SUPABASE_EMAIL: ${{ secrets.SUPABASE_EMAIL }} # add to gh
-      SUPABASE_PASSWORD: ${{ secrets.SUPABASE_PASSWORD }} # add to gh
-
+      SUPABASE_EMAIL: ${{ secrets.SUPABASE_EMAIL }}
+      SUPABASE_PASSWORD: ${{ secrets.SUPABASE_PASSWORD }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
