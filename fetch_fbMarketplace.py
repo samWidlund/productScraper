@@ -29,8 +29,4 @@ for item in client.dataset(run["defaultDatasetId"]).iterate_items():
     print(f"Found item: {item['marketplace_listing_title']} at {item['listing_price']['amount']}")
     if db.is_new_product(item['id']):
         db.add_product(item['id'], item['marketplace_listing_title'], item['listing_price']['amount'], item['listingUrl'])
-    # notify user
-
-    # check if product is already found, then not notify? think the add_product does not add duplicates anyway, but the notification part must be modified
-    # items.append(item) # debug
-
+        notify_product(item['marketplace_listing_title'], item['listing_price']['amount'], item['listingUrl'])
