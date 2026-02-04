@@ -24,7 +24,6 @@ db = SupabaseClient()
 db.login()
 
 # fetch produkts n notify
-items = [] # debug
 for item in client.dataset(run["defaultDatasetId"]).iterate_items():
     print(f"Found item: {item['marketplace_listing_title']} at {item['listing_price']['amount']}")
     if db.is_new_product(item['id']):
