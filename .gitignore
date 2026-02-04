@@ -8,7 +8,7 @@ __pycache__/
 
 # database
 *.sqbpro
-*.db
 
 # debug
-output/
+debug/
+test.py

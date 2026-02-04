@@ -1,3 +1,4 @@
 python-dotenv
 requests
 apify_client
+supabase

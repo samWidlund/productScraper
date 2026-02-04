@@ -5,6 +5,13 @@
 - ADDITIONAL, insert info about product -> auto fill account form? 
 - ADDITIONAL, insert info about product -> upload product on multiple platforms at once
 
+## Setup
+- python
+- epay API
+- apify facebook scraper API
+- supabase cloud database
+- github actions
+
 ## platforms 
 - facebook Marketplace
 - facebook 
@@ -15,9 +22,13 @@
 - plick?
 
 # backlog
-    - [ ] fetch fb marketplace
-    - [ ] ai to analyze products?
-    - [ ] research - api? selenium? scrapy?
+- [ ] increase safety supabase database
+    - [x] enable RLS
+    - [ ] add rls policies to access db, owner_id?
+- [x] fetch fb marketplace
+- [x] setup supabase and save products in cloud database
+    - [ ] currenly only working with static information, connect with product fetch script
+- [ ] ai to analyze products?
 - [ ] input product info in telegram chat -> publish product on platforms?
     - [ ] ebay API, do the rest semi automatic?
 

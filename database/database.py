@@ -1,52 +1,43 @@
-import sqlite3
+import supabase
+from supabase import create_client, Client
 import os
+from dotenv import load_dotenv
 
-def init_database():
-    """initialize the database and create table if it doesn't exist"""
-    db_path = os.path.join(os.path.dirname(__file__), 'ebay_found_items.db')
-    con = sqlite3.connect(db_path)
-    cur = con.cursor()
+load_dotenv()
 
-    cur.execute('''
-        CREATE TABLE IF NOT EXISTS products (
-            itemId TEXT PRIMARY KEY,
-            title TEXT NOT NULL,
-            price TEXT NOT NULL,
-            url TEXT NOT NULL,
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+class SupabaseClient:
+    def __init__(self):
+        self.supabase_key = os.environ.get('SUPABASE_KEY')
+        self.supabase_url = os.environ.get('SUPABASE_URL')
+
+        if not self.supabase_key or not self.supabase_url:
+            raise ValueError("Missing supabase_key or supabase_url environment variables")
+        
+        self.Client = create_client(self.supabase_url, self.supabase_key)
+
+    def login (self):
+        response = self.Client.auth.sign_in_with_password(
+            {
+                "email": os.environ.get('SUPABASE_EMAIL'),
+                "password": os.environ.get('SUPABASE_PASSWORD'),
+            }
         )
-    ''')
-    
-    con.commit()
-    con.close()
 
-def add_product(product_id, title, price, url):
-    db_path = os.path.join(os.path.dirname(__file__), 'ebay_found_items.db')
-    con = sqlite3.connect(db_path)
-    cur = con.cursor()
-    
-    # verify if product exist
-    cur.execute("SELECT itemId FROM products WHERE itemId = ?", (product_id,))
-    if cur.fetchone():
-        print(f"Product {product_id} already in database")
-        con.close()
-        return False
-    
-    # add product
-    cur.execute("INSERT INTO products (itemId, title, price, url) VALUES (?, ?, ?, ?)", 
-                (product_id, title, price, url))
-    con.commit()
-    con.close()
-    print(f"Added product to database: {title}")
-    return True
+        self.user_id = response.user.id
 
-def is_new_product(product_id):
-    
-    # verify if product already is found
-    db_path = os.path.join(os.path.dirname(__file__), 'ebay_found_items.db')
-    con = sqlite3.connect(db_path)
-    cur = con.cursor()
-    cur.execute("SELECT itemId FROM products WHERE itemId = ?", (product_id,))
-    result = cur.fetchone() is None
-    con.close()
-    return result
+    def add_product(self, itemid: str, title: str, price: float, url: str):
+
+        response = self.Client.table("products").insert({
+            "itemid": itemid,
+            "title": title,
+            "price": price,
+            "url": url,
+            "user_id": self.user_id
+        }).execute()
+        return response
+
+    def is_new_product(self, itemid: str):
+        response = self.Client.table("products").select("*").eq("itemid", itemid).execute()
+        print(f"Database check for itemid {itemid}, found {len(response.data)} records.")
+        return len(response.data) == 0
+
