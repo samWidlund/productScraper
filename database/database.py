@@ -1,6 +1,5 @@
-import requests
 import supabase
-from supabase import auth
+from supabase import create_client, Client
 import os
 from dotenv import load_dotenv
 
@@ -14,25 +13,31 @@ class SupabaseClient:
         if not self.supabase_key or not self.supabase_url:
             raise ValueError("Missing supabase_key or supabase_url environment variables")
         
-        self.client = supabase.create_client(self.supabase_url, self.supabase_key)
+        self.Client = create_client(self.supabase_url, self.supabase_key)
+
+    def login (self):
+        response = self.Client.auth.sign_in_with_password(
+            {
+                "email": os.environ.get('SUPABASE_EMAIL'),
+                "password": os.environ.get('SUPABASE_PASSWORD'),
+            }
+        )
+
+        self.user_id = response.user.id
 
     def add_product(self, itemid: str, title: str, price: float, url: str):
 
-        # authentication for database, does not work currently
-        user = supabase.auth.get_user()  
-        user_id =  user['data']['user']['id']
-        # det funkade innan jag lade till rls, måste lösa med owner_id nu
-
-        response = self.client.table("products").insert({
+        response = self.Client.table("products").insert({
             "itemid": itemid,
             "title": title,
             "price": price,
             "url": url,
-            "owner_id": user_id
+            "user_id": self.user_id
         }).execute()
         return response
 
     def is_new_product(self, itemid: str):
-        response = self.client.table("products").select("*").eq("itemid", itemid).execute()
+        response = self.Client.table("products").select("*").eq("itemid", itemid).execute()
         print(f"Database check for itemid {itemid}, found {len(response.data)} records.")
         return len(response.data) == 0
+

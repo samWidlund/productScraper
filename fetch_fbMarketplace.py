@@ -21,6 +21,7 @@ run = client.actor("U5DUNxhH3qKt5PnCf").call(run_input=run_input)
 
 # initialize supabase client
 db = SupabaseClient()
+db.login()
 
 # fetch produkts n notify
 items = [] # debug
