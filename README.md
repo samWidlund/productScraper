@@ -23,6 +23,7 @@
 
 # backlog
 - [ ] improve directory structure
+- [ ] print total found products / matches in database?
 - [ ] ai to analyze products?
 - [ ] input product info in telegram chat/web app -> publish product on platforms?
     - [ ] ebay API, do the rest semi automatic?
