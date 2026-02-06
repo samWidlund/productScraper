@@ -13,20 +13,18 @@
 - github actions
 
 ## platforms 
-- [x] facebook Marketplace - working
-- [ ] facebook 
-- [] ebay
-- [ ] tradera
-- [ ] blocket
-- [ ] vinted?
-- [ ] plick?
+- facebook Marketplace - working
+- ebay
+- tradera
+- blocket
+- vinted?
+- plick?
 
 # backlog
-- [ ] improve directory structure
-- [ ] print total found products / matches in database?
-- [ ] ai to analyze products?
-- [ ] input product info in telegram chat/web app -> publish product on platforms?
-    - [ ] ebay API, do the rest semi automatic?
+- improve directory structure
+- ai to analyze products?
+- input product info in telegram chat/web app -> publish product on platforms?
+    - ebay API, do the rest semi automatic?
 
 # ideas
 https://github.com/kyleronayne/marketplace-api
