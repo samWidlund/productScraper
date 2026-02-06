@@ -23,10 +23,21 @@ run = client.actor("U5DUNxhH3qKt5PnCf").call(run_input=run_input)
 db = SupabaseClient()
 db.login()
 
+# counter variables
+total_items = 0
+new_items = 0
+
+print("Fetching products from Facebook Marketplace...")
+
 # fetch produkts n notify
 for item in client.dataset(run["defaultDatasetId"]).iterate_items():
     print(f"Found item: {item['marketplace_listing_title']} at {item['listing_price']['amount']}")
+    total_items += 1
 
     if db.is_new_product(item['id']): # notify user and and product to db if new
         db.add_product(item['id'], item['marketplace_listing_title'], item['listing_price']['amount'], item['listingUrl'])
         notify_product(item['marketplace_listing_title'], item['listing_price']['amount'], item['listingUrl'])
+        new_items += 1
+
+print(f"Total items found: {total_items}")
+print(f"New items found: {new_items}")
