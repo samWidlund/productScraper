@@ -13,16 +13,16 @@
 - github actions
 
 ## platforms 
-- [x]facebook Marketplace - working
-- [ ]facebook 
-- [x]ebay
-- [ ]tradera
-- [ ]blocket
-- [ ]vinted?
-- [ ]plick?
+- [x] facebook Marketplace - working
+- [ ] facebook 
+- [] ebay
+- [ ] tradera
+- [ ] blocket
+- [ ] vinted?
+- [ ] plick?
 
 # backlog
-- [ ] make sure prints in workflow when notification is sent
+- [ ] improve directory structure
 - [ ] ai to analyze products?
 - [ ] input product info in telegram chat/web app -> publish product on platforms?
     - [ ] ebay API, do the rest semi automatic?
