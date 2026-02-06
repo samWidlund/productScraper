@@ -1,9 +1,9 @@
 # script to fetch products form platforms n notify user via telegramBot
 
 from telegramBot import notify_product
-from ebay_api import EbayAPI
+from fetch.ebay.ebay_api import EbayAPI
 from database.database import add_product, is_new_product, init_database
-import config
+import fetch.ebay.config as config
 
 init_database()
 
