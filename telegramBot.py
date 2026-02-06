@@ -1,7 +1,6 @@
 import os
 from dotenv import load_dotenv
 import requests
-import sys
 
 # load enviroment variables
 load_dotenv()
