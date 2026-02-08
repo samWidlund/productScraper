@@ -1,5 +1,4 @@
-name: Telegram notifyProduct Bot Workflow
-
+name: productScraper Workflow
 on:
   push:
     # branches:

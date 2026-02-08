@@ -60,7 +60,7 @@ python fetch/facebook/fb_marketplace.py
 ```
 
 **Automated via GitHub Actions:**
-Configured to run every 3 hours. See `.github/workflows/telegramBot-workflow.yml`
+Configured to run every 3 hours. See `.github/workflows/workflow.yml`
 > **Note:** When automated via github actions, make sure to include .env variables in repository secrets. 
 
 ## Project Structure
