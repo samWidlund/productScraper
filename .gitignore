@@ -6,9 +6,6 @@ __pycache__/
 *.pyc
 *.pyo
 
-# database
-*.sqbpro
-
 # debug
 debug/
 testing.py
