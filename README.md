@@ -48,7 +48,7 @@ Automated marketplace scraper that monitors online platforms for products and no
      .\.venv\Scripts\Activate.ps1
      ```
 
-   - Tip: add `.venv/` to `.gitignore` to avoid committing the environment.
+   - **Tip:** include `.venv/` in `.gitignore` to avoid committing the environment.
 
 3. Install dependencies:
    ```bash
