@@ -34,12 +34,28 @@ Automated marketplace scraper that monitors online platforms for products and no
 ### Installation
 
 1. Clone the repository
-2. Install dependencies:
+2. Create and activate a virtual environment
+
+   - Unix / macOS (bash / zsh / fish):
+     ```bash
+     python3 -m venv .venv
+     source .venv/bin/activate
+     ```
+
+   - Windows (PowerShell):
+     ```powershell
+     python -m venv .venv
+     .\.venv\Scripts\Activate.ps1
+     ```
+
+   - Tip: add `.venv/` to `.gitignore` to avoid committing the environment.
+
+3. Install dependencies:
    ```bash
    pip install -r requirements.txt
    ```
 
-3. Create `.env` file with your credentials:
+4. Create `.env` file with your credentials:
    ```env
    BOT_TOKEN=your_telegram_token
    BOT_CHAT_ID=your_chat_id
