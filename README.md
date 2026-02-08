@@ -1,43 +1,88 @@
-# Tool to quickly find the best prices and simplify reselling
+# Automated product scraping tool for resellers
 
-# Main purpose/plan
-- auto fetch products based on price, notify user via phone push notification.
-- ADDITIONAL, insert info about product -> auto fill account form? 
-- ADDITIONAL, insert info about product -> upload product on multiple platforms at once
+Automated marketplace scraper that monitors online platforms for products and notifies users via Telegram push notification.
 
-## Setup
-- python
-- epay API
-- apify facebook scraper API
-- supabase cloud database
-- github actions
+## Features
 
-## platforms 
-- facebook Marketplace - working
-- ebay
-- tradera
-- blocket
-- vinted?
-- plick?
+- ✅ Scheduled product fetching across multiple marketplaces
+- ✅ Real-time Telegram notifications
+- ✅ Product filtering by price and keywords
+- 🔄 **Planned**: Auto-fill account forms with product info
+- 🔄 **Planned**: Multi-platform product publishing
 
-# backlog
-- improve directory structure
-- ai to analyze products?
-- input product info in telegram chat/web app -> publish product on platforms?
-    - ebay API, do the rest semi automatic?
+## Supported Platforms
 
-# ideas
-https://github.com/kyleronayne/marketplace-api
-https://github.com/scrapy/scrapy
-https://github.com/D4Vinci/Scrapling
+| Platform | Status |
+|----------|--------|
+| Facebook Marketplace | ✅ Working |
+| eBay | 🔄 In development |
+| Tradera | 📋 Planned |
+| Blocket | 📋 Planned |
+| Vinted | 📋 Planned |
 
-# problems
+## Requirements
 
-# get started
-### .gitignore
-```txt
-    .env
-    __pycache__/
-    *.pyc
-    *.pyo
+- Python 3.10+
+- eBay API credentials
+- Apify API (Facebook scraper)
+- Supabase account
+- Telegram Bot token
+- Github account (Actions)
+
+## Quick Start
+
+### Installation
+
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. Create `.env` file with your credentials:
+   ```env
+   BOT_TOKEN=your_telegram_token
+   BOT_CHAT_ID=your_chat_id
+   EBAY_CLIENT_ID=your_ebay_id
+   EBAY_CLIENT_SECRET=your_ebay_secret
+   APIFY_TOKEN=your_apify_token
+   SUPABASE_URL=your_supabase_url
+   SUPABASE_KEY=your_supabase_key
+   SUPABASE_EMAIL=your_email
+   SUPABASE_PASSWORD=your_password
+   ```
+
+### Running
+
+**Locally:**
+```bash
+python fetch/facebook/fb_marketplace.py
 ```
+
+**Automated via GitHub Actions:**
+Configured to run every 3 hours. See `.github/workflows/telegramBot-workflow.yml`
+> **Note:** When automated via github actions, make sure to include .env variables in repository secrets. 
+
+## Project Structure
+
+```
+├── fetch/                    # Product fetchers
+│   ├── facebook/
+│   └── ebay/
+├── database/                 # Database operations
+├── publish/                  # Publishing utilities
+├── notification/             # Bot notification       
+│   └── telegramBot.py/       
+└── README.md
+```
+
+## Backlog
+
+- [ ] AI product analysis
+- [ ] Telegram chat interface for publishing
+    - [ ] Semi-automatic eBay integration
+    - [ ] Multi-platform batch publishing
+
+## License
+
+MIT
