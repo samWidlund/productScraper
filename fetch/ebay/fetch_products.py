@@ -1,6 +1,9 @@
 # script to fetch products form platforms n notify user via telegramBot
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
-from telegramBot import notify_product
+from notification.telegramBot import notify_product
 from fetch.ebay.ebay_api import EbayAPI
 from database.database import add_product, is_new_product, init_database
 import fetch.ebay.config as config
