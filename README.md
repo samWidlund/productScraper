@@ -88,7 +88,6 @@ Configured to run every 3 hours. See `.github/workflows/workflow.yml`
 ├── database/                 # Database operations
 ├── publish/                  # Publishing utilities
 ├── notification/             # Bot notification       
-│   └── telegramBot.py/       
 └── README.md
 ```
 
