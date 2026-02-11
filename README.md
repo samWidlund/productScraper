@@ -4,21 +4,21 @@ Automated marketplace scraper that monitors online platforms for products and no
 
 ## Features
 
-- ✅ Scheduled product fetching across multiple marketplaces
-- ✅ Real-time Telegram notifications
-- ✅ Product filtering by price and keywords
-- 🔄 **Planned**: Auto-fill account forms with product info
-- 🔄 **Planned**: Multi-platform product publishing
+- Scheduled product fetching across multiple marketplaces
+- Real-time Telegram notifications
+- Product filtering by price and keywords
+- **Planned**: Auto-fill account forms with product info
+- **Planned**: Multi-platform product publishing
 
 ## Supported Platforms
 
 | Platform | Status |
 |----------|--------|
-| Facebook Marketplace | ✅ Working |
-| eBay | 🔄 In development |
-| Tradera | 📋 Planned |
-| Blocket | 📋 Planned |
-| Vinted | 📋 Planned |
+| Facebook Marketplace | **Working** |
+| eBay | In development |
+| Tradera | Planned |
+| Blocket | Planned |
+| Vinted | Planned |
 
 ## Requirements
 
@@ -29,20 +29,20 @@ Automated marketplace scraper that monitors online platforms for products and no
 - Telegram Bot token
 - Github account (Actions)
 
-## Quick Start
+## Setup
 
 ### Installation
 
 1. Clone the repository
 2. Create and activate a virtual environment
 
-   - Unix / macOS (bash / zsh / fish):
+   - Linux / macOS (bash / zsh / fish)
      ```bash
      python3 -m venv .venv
      source .venv/bin/activate
      ```
 
-   - Windows (PowerShell):
+   - Windows (PowerShell)
      ```powershell
      python -m venv .venv
      .\.venv\Scripts\Activate.ps1
@@ -71,13 +71,22 @@ Automated marketplace scraper that monitors online platforms for products and no
 ### Running
 
 **Locally:**
-```bash
+
+- Windows
+
+```powershell
 python fetch/facebook/fb_marketplace.py
+```
+
+- Linux / macOS
+
+```bash
+python3 fetch/facebook/fb_marketplace.py
 ```
 
 **Automated via GitHub Actions:**
 Configured to run every 3 hours. See `.github/workflows/workflow.yml`
-> **Note:** When automated via github actions, make sure to include .env variables in repository secrets. 
+> **Note:** When automated, make sure to include .env variables in repository secrets. 
 
 ## Project Structure
 
