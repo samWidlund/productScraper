@@ -1,6 +1,6 @@
 name: productScraper Workflow
 on:
-  push:
+  # push:
     # branches:
     #  - main
 
