@@ -39,5 +39,5 @@ jobs:
       - name: run ebay_marketplace.py
         run: python fetch/ebay/ebay_marketplace.py
         
-      - name: fetch fb_marketplace.py
-        run: python fetch/facebook/fb_marketplace.py
+      # - name: fetch fb_marketplace.py
+      #   run: python fetch/facebook/fb_marketplace.py
