@@ -36,8 +36,8 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: run ebay_marketplace.py
+      - name: Run ebay_marketplace.py
         run: python fetch/ebay/ebay_marketplace.py
         
-      # - name: fetch fb_marketplace.py
+      # - name: Run fb_marketplace.py
       #   run: python fetch/facebook/fb_marketplace.py
