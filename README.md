@@ -100,13 +100,6 @@ Configured to run every 3 hours. See `.github/workflows/workflow.yml`
 └── README.md
 ```
 
-## Backlog
-
-- [ ] AI product analysis
-- [ ] Telegram chat interface for publishing
-    - [ ] Semi-automatic eBay integration
-    - [ ] Multi-platform batch publishing
-
 ## License
 
 MIT
