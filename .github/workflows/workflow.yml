@@ -1,7 +1,8 @@
 name: productScraper Workflow
 on:
-  # push:
-    # branches:
+  push:
+    branches:
+      - fix/ebay_marketplace
     #  - main
 
   workflow_dispatch:  
@@ -34,6 +35,9 @@ jobs:
 
       - name: Install dependencies
         run: pip install -r requirements.txt
+
+      - name: Run ebay_marketplace.py
+        run: python fetch/ebay/ebay_marketplace.py
         
-      - name: Insert product
-        run: python fetch/facebook/fb_marketplace.py
+      # - name: Run fb_marketplace.py
+      #   run: python fetch/facebook/fb_marketplace.py
