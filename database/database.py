@@ -25,12 +25,13 @@ class SupabaseClient:
 
         self.user_id = response.user.id
 
-    def add_product(self, itemid: str, title: str, price: float, url: str):
+    def add_product(self, itemid: str, title: str, price: float, currency: str, url: str):
 
         response = self.Client.table("products").insert({
             "itemid": itemid,
             "title": title,
             "price": price,
+            "currency": currency,
             "url": url,
             "user_id": self.user_id
         }).execute()
