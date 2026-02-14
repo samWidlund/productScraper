@@ -1,12 +1,11 @@
-# https://blocket-api.se/examples/
-
+# CAUTION - this code is contains a non official API client for blocket, and is not guaranteed to fully follow blockets terms of service. Use at your own risk. The code is for educational purposes only and should not be used for commercial purposes without proper authorization from blocket.
 import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 import os
 from dotenv import load_dotenv
-from notification.telegramBot import notify_product
+from notification.telegramBot import notify_product, get_sent_notifications
 from database.database import SupabaseClient
 from blocket_api import (
     BlocketAPI,
@@ -79,14 +78,15 @@ for product in products:
     print(f"Price: {amount} {currency}")
     print(f"Location: {location}")
     print(f"ID: {product_id}")
-    print(f"URL: {url}\n")
+    print(f"URL: {url}")
     total_items += 1
 
-    if db.is_new_product(product_id): # notify user and and product to db if new
-        db.add_product(product_id, heading, amount, url)
-        notify_product(heading, amount, url)
+    if db.is_new_product("blocket_products", product_id): # notify user and and product to db if new
+        db.add_product("blocket_products", product_id, heading, amount, currency, url)
+        notify_product(heading, amount, currency, url)
         new_items += 1
-
+        
+sent_notifications = get_sent_notifications()
 print(f"Total items found: {total_items}")
 print(f"New items found: {new_items}")
-
+print(f"Sent notifications: {sent_notifications}")
