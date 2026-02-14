@@ -1,5 +1,4 @@
-# https://blocket-api.se/examples/
-
+# CAUTION - this code is contains a non official API client for blocket, and is not guaranteed to fully follow blockets terms of service. Use at your own risk. The code is for educational purposes only and should not be used for commercial purposes without proper authorization from blocket.
 import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
