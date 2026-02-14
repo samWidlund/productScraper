@@ -78,12 +78,12 @@ for product in products:
     print(f"Price: {amount} {currency}")
     print(f"Location: {location}")
     print(f"ID: {product_id}")
-    print(f"URL: {url}\n")
+    print(f"URL: {url}")
     total_items += 1
 
-    if db.is_new_product(product_id): # notify user and and product to db if new
-        db.add_product(product_id, heading, amount, url)
-        notify_product(heading, amount, url)
+    if db.is_new_product("blocket_products", product_id): # notify user and and product to db if new
+        db.add_product("blocket_products", product_id, heading, amount, currency, url)
+        notify_product(heading, amount, currency, url)
         new_items += 1
 
 print(f"Total items found: {total_items}")
