@@ -34,9 +34,9 @@ for product in products:
     print(f"Found item: {product['title']} at {product['price']} {product['currency']} id: {product['id']}")
     total_items += 1
 
-    if db.is_new_product(product['id']): # notify user and and product to db if new
-        db.add_product(product['id'], product['title'], product['price'], product['url'])
-        notify_product(product['title'], product['price'], product['url'])
+    if db.is_new_product("ebay_products", product['id']): # notify user and and product to db if new
+        db.add_product("ebay_products", product['id'], product['title'], product['price'], product['currency'], product['url'])
+        notify_product(product['title'], product['price'], product['currency'], product['url'])
         new_items += 1
 
 print(f"Total items found: {total_items}")

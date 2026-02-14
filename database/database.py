@@ -25,9 +25,9 @@ class SupabaseClient:
 
         self.user_id = response.user.id
 
-    def add_product(self, itemid: str, title: str, price: float, currency: str, url: str):
+    def add_product(self, table, itemid: str, title: str, price: float, currency: str, url: str):
 
-        response = self.Client.table("products").insert({
+        response = self.Client.table(table).insert({
             "itemid": itemid,
             "title": title,
             "price": price,
@@ -37,8 +37,8 @@ class SupabaseClient:
         }).execute()
         return response
 
-    def is_new_product(self, itemid: str):
-        response = self.Client.table("products").select("*").eq("itemid", itemid).execute()
+    def is_new_product(self, table, itemid: str):
+        response = self.Client.table(table).select("*").eq("itemid", itemid).execute()
         print(f"Database check for itemid {itemid}, found {len(response.data)} records.")
         return len(response.data) == 0
 

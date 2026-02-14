@@ -7,7 +7,7 @@ load_dotenv()
 TOKEN = os.getenv("BOT_TOKEN")
 CHAT_ID = os.getenv("BOT_CHAT_ID")
 
-def notify_product(title, price, url):
+def notify_product(title, price, currency, url):
 
     # stop if tokens not valid
     if not TOKEN or not CHAT_ID:
@@ -15,7 +15,7 @@ def notify_product(title, price, url):
         return False
 
     # telegram message
-    text = f"🚨 Product found! 🚨\n{title}\n{price}\n{url}"
+    text = f"🚨 Product found! 🚨\n{title}\n{price} {currency}\n{url}"
     url_api = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
     
     try:
