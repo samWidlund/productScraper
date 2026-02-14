@@ -6,8 +6,10 @@ import requests
 load_dotenv()
 TOKEN = os.getenv("BOT_TOKEN")
 CHAT_ID = os.getenv("BOT_CHAT_ID")
+sent_notifications = 0
 
 def notify_product(title, price, currency, url):
+    global sent_notifications
 
     # stop if tokens not valid
     if not TOKEN or not CHAT_ID:
@@ -25,14 +27,17 @@ def notify_product(title, price, currency, url):
         response = r.json()
         if response.get("ok"):
             print("notification sent!")
+            sent_notifications += 1
             return True
         else:
             print(f"wrong answer from Telegram API: {response}")
             return False
-            
     except requests.exceptions.RequestException as e:
         print(f"network error: {e}")
         return False
     except Exception as e:
         print(f"unexpected error: {e}")
         return False
+
+def get_sent_notifications():
+    return sent_notifications

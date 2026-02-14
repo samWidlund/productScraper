@@ -5,7 +5,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 import os
 from dotenv import load_dotenv
 from apify_client import ApifyClient
-from notification.telegramBot import notify_product
+from notification.telegramBot import notify_product, get_sent_notifications
 from database.database import SupabaseClient
 
 load_dotenv()
@@ -43,5 +43,7 @@ for item in client.dataset(run["defaultDatasetId"]).iterate_items():
         notify_product(item['marketplace_listing_title'], item['listing_price'], item['amount'], item['listingUrl'])
         new_items += 1
 
+sent_notifications = get_sent_notifications()
 print(f"Total items found: {total_items}")
 print(f"New items found: {new_items}")
+print(f"Sent notifications: {sent_notifications}")

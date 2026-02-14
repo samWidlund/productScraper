@@ -5,7 +5,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 import os
 from dotenv import load_dotenv
-from notification.telegramBot import notify_product
+from notification.telegramBot import notify_product, get_sent_notifications
 from database.database import SupabaseClient
 from blocket_api import (
     BlocketAPI,
@@ -85,7 +85,8 @@ for product in products:
         db.add_product("blocket_products", product_id, heading, amount, currency, url)
         notify_product(heading, amount, currency, url)
         new_items += 1
-
+        
+sent_notifications = get_sent_notifications()
 print(f"Total items found: {total_items}")
 print(f"New items found: {new_items}")
-
+print(f"Sent notifications: {sent_notifications}")
