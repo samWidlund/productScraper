@@ -16,8 +16,8 @@ Automated marketplace scraper that monitors online platforms for products and no
 |----------|--------|
 | Facebook Marketplace | **Working** |
 | eBay | **Working** |
+| Blocket | **Working** |
 | Tradera | Planned |
-| Blocket | In development |
 | Vinted | Planned |
 
 ## Requirements
@@ -48,7 +48,7 @@ Automated marketplace scraper that monitors online platforms for products and no
      .\.venv\Scripts\Activate.ps1
      ```
 
-   - **Tip:** include `.venv/` in `.gitignore` to avoid committing the environment.
+   > **Note:** Include `.venv/` in `.gitignore` to avoid committing the environment.
 
 3. Install dependencies:
    ```bash
