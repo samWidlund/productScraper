@@ -17,7 +17,7 @@ Automated marketplace scraper that monitors online platforms for products and no
 | Facebook Marketplace | **Working** |
 | eBay | **Working** |
 | Tradera | Planned |
-| Blocket | Planned |
+| Blocket | In development |
 | Vinted | Planned |
 
 ## Requirements
