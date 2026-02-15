@@ -17,7 +17,7 @@ Automated marketplace scraper that monitors online platforms for products and no
 | Facebook Marketplace | **Working** |
 | eBay | **Working** |
 | Blocket | **Working** |
-| Tradera | Planned |
+| Tradera | In development |
 | Vinted | Planned |
 
 ## Requirements
@@ -99,6 +99,12 @@ Configured to run every 3 hours. See `.github/workflows/workflow.yml`
 ├── notification/             # Bot notification       
 └── README.md
 ```
+
+## References
+[EbayAPI](https://developer.ebay.com/develop) \
+[TraderaAPI](https://pypi.org/project/tradera_api/) \
+[BlocketAPI](https://blocket-api.se/) \
+[ApifyFacebookAPI](https://apify.com/apify/facebook-pages-scraper)
 
 ## License
 

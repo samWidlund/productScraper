@@ -3,3 +3,4 @@ requests
 apify_client
 supabase
 blocket-api
+tradera-api
