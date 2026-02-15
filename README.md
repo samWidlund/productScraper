@@ -100,6 +100,12 @@ Configured to run every 3 hours. See `.github/workflows/workflow.yml`
 └── README.md
 ```
 
+## References
+[EbayAPI](https://developer.ebay.com/develop) \
+[TraderaAPI](https://pypi.org/project/tradera_api/) \
+[BlocketAPI](https://blocket-api.se/) \
+[ApifyFacebookAPI](https://apify.com/apify/facebook-pages-scraper)
+
 ## License
 
 MIT
