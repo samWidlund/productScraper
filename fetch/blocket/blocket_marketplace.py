@@ -9,6 +9,7 @@ from notification.telegramBot import notify_product, get_sent_notifications
 from database.database import SupabaseClient
 from blocket_api import (
     BlocketAPI,
+    Category, ## optional, not used in this code but can be used to narrow down search
     SortOrder,
     Location,
 )
