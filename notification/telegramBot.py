@@ -8,7 +8,7 @@ TOKEN = os.getenv("BOT_TOKEN")
 CHAT_ID = os.getenv("BOT_CHAT_ID")
 sent_notifications = 0
 
-def notify_product(title, price, currency, url):
+def notify_product(title, price, currency, url, auction_type=None):
     global sent_notifications
 
     # stop if tokens not valid
@@ -18,6 +18,8 @@ def notify_product(title, price, currency, url):
 
     # telegram message
     text = f"🚨 Product found! 🚨\n{title}\n{price} {currency}\n{url}"
+    if auction_type:
+        text += f"\nType: {auction_type}"
     url_api = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
     
     try:
