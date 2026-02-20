@@ -2,5 +2,5 @@ python-dotenv
 requests
 apify_client
 supabase
-blocket-api==latest
+blocket-api==latest:
 tradera-api
