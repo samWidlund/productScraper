@@ -2,6 +2,9 @@
 
 Automated marketplace scraper that monitors online platforms for products and notifies users via Telegram push notification.
 
+## Background
+After years of reselling clothes, I grew tired of manually searching marketplaces for the best deals. Instead of spending hours doing it myself, I built a system that automates the process and lets software handle the work for me.
+
 ## Features
 
 - Scheduled product fetching across multiple marketplaces
