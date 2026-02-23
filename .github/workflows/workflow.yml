@@ -45,8 +45,8 @@ jobs:
     #  - name: Run fb_marketplace.py
     #    run: python fetch/facebook/fb_marketplace.py
 
-      # - name: Run blocket_marketplace.py
-      #   run: python fetch/blocket/blocket_marketplace.py
+      - name: Run blocket_marketplace.py
+        run: python fetch/blocket/blocket_marketplace.py
 
       - name: Run tradera_marketplace.py
         run: python fetch/tradera/tradera_marketplace.py
