@@ -2,5 +2,5 @@ python-dotenv
 requests
 apify_client
 supabase
-blocket-api==0.4
+blocket-api>=0.4
 tradera-api
