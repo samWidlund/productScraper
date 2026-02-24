@@ -17,7 +17,7 @@ def notify_product(title, price, currency, url, auction_type=None):
         return False
 
     # telegram message
-    text = f"🚨 Product found! 🚨\n{title}\n{price} {currency}\n{url}"
+    text = f"🚨{price} {currency}🚨\n{title}\n{url}"
     if auction_type:
         text += f"\nType: {auction_type}"
     url_api = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
