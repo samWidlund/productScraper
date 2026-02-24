@@ -33,7 +33,7 @@ jobs:
           cache: 'pip'
 
       - name: Upgrade pip
-        run: pip install --upgrade pip
+        run: pip install --upgrade pip blocket_api tradera_api python-dotenv requests supabase vinted_scraper
 
       - name: Install dependencies
         run: pip install -r requirements.txt
