@@ -51,6 +51,13 @@ jobs:
   fetch-tradera:
     runs-on: ubuntu-latest
     environment: telegramApi
+    env:
+        BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+        BOT_CHAT_ID: ${{ secrets.BOT_CHAT_ID }}
+        SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+        SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+        SUPABASE_EMAIL: ${{ secrets.SUPABASE_EMAIL }}
+        SUPABASE_PASSWORD: ${{ secrets.SUPABASE_PASSWORD }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
