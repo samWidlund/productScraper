@@ -12,6 +12,7 @@ After years of reselling clothes, I grew tired of manually searching marketplace
 - Product filtering by price and keywords
 - **Planned**: Auto-fill account forms with product info
 - **Planned**: Multi-platform product publishing
+- **Planned**: AI product analysis
 
 ## Supported Platforms
 
