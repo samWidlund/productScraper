@@ -20,8 +20,9 @@ After years of reselling clothes, I grew tired of manually searching marketplace
 | Facebook Marketplace | **Working** |
 | eBay | **Working** |
 | Blocket | **Working** |
-| Tradera | In development |
-| Vinted | Planned |
+| Tradera | **Working** |
+| Vinted | Development |
+| Depop | Planned |
 
 ## Requirements
 
