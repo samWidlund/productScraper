@@ -36,7 +36,7 @@ jobs:
         run: pip install --upgrade pip
 
       - name: Install dependencies
-        run: pip install requirements.txt
+        run: pip install -r requirements.txt
 
       - name: Run ebay_marketplace.py
         run: python fetch/ebay/ebay_marketplace.py
