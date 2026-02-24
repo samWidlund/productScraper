@@ -19,9 +19,7 @@ new_items = 0
 MAX_PRICE_SEK = 1000
 
 domain_currency = {
-    "vinted.de": ("Tyskland", "EUR", 11.5),
     "vinted.pl": ("Polen", "PLN", 2.4),
-    "vinted.fi": ("Finland", "EUR", 11.5),
     "vinted.dk": ("Danmark", "DKK", 1.55),
     "vinted.se": ("Sverige", "SEK", 1.0),
 }
