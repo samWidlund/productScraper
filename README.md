@@ -95,10 +95,14 @@ Configured to run every 3 hours. See `.github/workflows/workflow.yml`
 
 ```
 ├── fetch/                    # Product fetchers
+│   ├── blocket/
+│   ├── ebay/
 │   ├── facebook/
-│   └── ebay/
+│   ├── tradera/
+│   ├── vinted/
+│   └── depop/
 ├── database/                 # Database operations
-├── publish/                  # Publishing utilities
+├── publish/                  # Publishing utilities (currently empty)
 ├── notification/             # Bot notification       
 └── README.md
 ```
