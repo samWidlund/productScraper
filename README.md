@@ -2,6 +2,9 @@
 
 Automated marketplace scraper that monitors online platforms for products and notifies users via Telegram push notification.
 
+## Background
+After years of reselling clothes, I grew tired of manually searching marketplaces for the best deals. Instead of spending hours doing it myself, I built a system that automates the process and lets software handle the work for me.
+
 ## Features
 
 - Scheduled product fetching across multiple marketplaces
@@ -9,6 +12,7 @@ Automated marketplace scraper that monitors online platforms for products and no
 - Product filtering by price and keywords
 - **Planned**: Auto-fill account forms with product info
 - **Planned**: Multi-platform product publishing
+- **Planned**: AI product analysis
 
 ## Supported Platforms
 
@@ -17,8 +21,9 @@ Automated marketplace scraper that monitors online platforms for products and no
 | Facebook Marketplace | **Working** |
 | eBay | **Working** |
 | Blocket | **Working** |
-| Tradera | In development |
-| Vinted | Planned |
+| Tradera | **Working** |
+| Vinted | Development |
+| Depop | Planned |
 
 ## Requirements
 
@@ -92,10 +97,14 @@ Configured to run every 3 hours. See `.github/workflows/workflow.yml`
 
 ```
 ├── fetch/                    # Product fetchers
+│   ├── blocket/
+│   ├── depop/
+│   ├── ebay/
 │   ├── facebook/
-│   └── ebay/
+│   ├── tradera/
+│   └── vinted/
 ├── database/                 # Database operations
-├── publish/                  # Publishing utilities
+├── publish/                  # Publishing utilities (currently empty)
 ├── notification/             # Bot notification       
 └── README.md
 ```

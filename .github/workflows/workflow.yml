@@ -32,6 +32,9 @@ jobs:
           python-version: '3.11'
           cache: 'pip'
 
+      - name: Upgrade pip
+        run: pip install --upgrade pip
+
       - name: Install dependencies
         run: pip install -r requirements.txt
 
@@ -45,5 +48,31 @@ jobs:
       - name: Run blocket_marketplace.py
         run: python fetch/blocket/blocket_marketplace.py
 
+  fetch-tradera:
+    runs-on: ubuntu-latest
+    environment: telegramApi
+    env:
+        BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+        BOT_CHAT_ID: ${{ secrets.BOT_CHAT_ID }}
+        SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+        SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+        SUPABASE_EMAIL: ${{ secrets.SUPABASE_EMAIL }}
+        SUPABASE_PASSWORD: ${{ secrets.SUPABASE_PASSWORD }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5 
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Upgrade pip
+        run: pip install --upgrade pip
+
+      - name: Install tradera_api
+        run: pip install tradera_api python-dotenv requests supabase
+      
       - name: Run tradera_marketplace.py
         run: python fetch/tradera/tradera_marketplace.py
