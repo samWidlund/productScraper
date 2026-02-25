@@ -3,10 +3,9 @@ import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
-import os
-from dotenv import load_dotenv
 from notification.telegramBot import notify_product, get_sent_notifications
 from database.database import SupabaseClient
+from fetch.fetch_variables import search_term
 from blocket_api import (
     BlocketAPI,
     SortOrder,
@@ -56,7 +55,7 @@ all_locations = [
 
 # search all of blocket
 response = api.search(
-    "Arcteryx",
+    search_term,
     sort_order=SortOrder.PRICE_ASC,
     locations=all_locations
     )
