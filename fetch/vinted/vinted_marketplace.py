@@ -25,8 +25,11 @@ print(f"Fetching vinted marketplace... ")
 for item in items:
     total_items += 1
     print(f"{item.title} - {item.price} {item.currency} - {item.url} - {item.id}")
-    # database
-    # telegram
+
+    if db.is_new_product("vinted_products", item.id):
+        db.add_product("vinted_products", item.id, item.title, item.price, item.currency, item.url)
+        notify_product(item.title, item.price, item.currency, item.url)
+        new_items += 1
 
 sent_notifications = get_sent_notifications()
 print(f"Total items found: {total_items}")
