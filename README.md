@@ -22,7 +22,7 @@ After years of reselling clothes, I grew tired of manually searching marketplace
 | eBay | **Working** |
 | Blocket | **Working** |
 | Tradera | **Working** |
-| Vinted | Development |
+| Vinted | **Working** |
 | Depop | Planned |
 
 ## Requirements
