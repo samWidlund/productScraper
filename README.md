@@ -89,6 +89,9 @@ python fetch/facebook/fb_marketplace.py
 python3 fetch/facebook/fb_marketplace.py
 ```
 
+**Scraping specifications:**
+See `fetch/fetch_variables.py` and modify the variables to match your preferred criterias
+
 **Automated via GitHub Actions:**
 Configured to run every 3 hours. See `.github/workflows/workflow.yml`
 > **Note:** When automated, make sure to include .env variables in repository secrets. 

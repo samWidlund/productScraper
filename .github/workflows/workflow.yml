@@ -7,6 +7,19 @@ on:
   workflow_dispatch:  
 #  schedule:
     # - cron: '0 */3 * * *'
+    inputs:
+      search_term:
+        description: 'Seach term'
+        required: true
+        default: 'Arcteryx'
+      price_cap_sek:
+        description: 'Max price SEK'
+        required: true
+        default: '2000'
+      price_cap_usd:
+        description: 'Max price USD'
+        required: true
+        default: '200'
    
 jobs:
   fetch-products:
