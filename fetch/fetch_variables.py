@@ -1,4 +1,4 @@
-## globla variables to be used when fetching each marketplace
+## global variables to be used when fetching each marketplace
 
 search_term = "Arcteryx"
 price_cap_sek = 2000

@@ -94,13 +94,12 @@ Configured to run every 3 hours via github actions. See `.github/workflows/workf
 > **Note:** When automated, make sure to include .env variables in repository secrets. 
 
 ### Scraping specifications
-**Locally:**
-Configure the variables in `fetch/fetch_variables.py`
-
-**Automated:**
-Specify the inputs seen in popup during workflow trigger. Example shown below:
-
-![inputsDemo.png](inputsDemo.png)
+To specify what criteria the scraper should match, configure the variables in `fetch/fetch_variables.py`:
+```python
+search_term = "Arcteryx"
+price_cap_sek = 2000
+price_cap_USD = 200 
+```
 
 
 ## Project Structure
