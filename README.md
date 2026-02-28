@@ -1,18 +1,17 @@
 # Automated product scraping tool for resellers
 
-Automated marketplace scraper that monitors online platforms for products and notifies users via Telegram push notification.
+Automated marketplace scraper that monitors online platforms for products and notifies users via Telegram push notification. Combining multiple scraper APIs into one simple easy-to-use applicaton.
 
 ## Background
+
 After years of reselling clothes, I grew tired of manually searching marketplaces for the best deals. Instead of spending hours doing it myself, I built a system that automates the process and lets software handle the work for me.
 
 ## Features
 
 - Scheduled product fetching across multiple marketplaces
 - Real-time Telegram notifications
-- Product filtering by price and keywords
-- **Planned**: Auto-fill account forms with product info
-- **Planned**: Multi-platform product publishing
-- **Planned**: AI product analysis
+- Product filtering by price and keyword
+- Database integration preventing repeated notifications
 
 ## Supported Platforms
 
@@ -91,21 +90,20 @@ python3 fetch/facebook/fb_marketplace.py
 
 **Automated:**
 Configured to run every 3 hours via github actions. See `.github/workflows/workflow.yml` \
-> **Note:** When automated, make sure to include .env variables in repository secrets. 
+> **Note:** Make sure to include .env variables in repository secrets. 
 
 ### Scraping specifications
 To specify what criteria the scraper should match, configure the variables in `fetch/fetch_variables.py`:
 ```python
-search_term = "Arcteryx"
-price_cap_sek = 2000
-price_cap_USD = 200 
+search_term = "Arcteryx" # search word used when scraping each marketplace
+price_cap_sek = 2000 # swedish listings
+price_cap_USD = 200 # non swedish listings
 ```
-
 
 ## Project Structure
 
 ```
-├── fetch/                    # Product fetchers
+├── fetch/                    # Marketplace scrapers
 │   ├── blocket/
 │   ├── depop/
 │   ├── ebay/
@@ -114,7 +112,7 @@ price_cap_USD = 200
 │   └── vinted/
 ├── database/                 # Database operations
 ├── publish/                  # Publishing utilities (currently empty)
-├── notification/             # Bot notification       
+├── notification/             # User bot notificiation       
 └── README.md
 ```
 
@@ -122,7 +120,8 @@ price_cap_USD = 200
 [EbayAPI](https://developer.ebay.com/develop) \
 [TraderaAPI](https://pypi.org/project/tradera_api/) \
 [BlocketAPI](https://blocket-api.se/) \
-[ApifyFacebookAPI](https://apify.com/apify/facebook-pages-scraper)
+[FacebookAPI](https://apify.com/apify/facebook-pages-scraper) \
+[VintedAPI](https://vinted-api.se/)
 
 ## License
 
