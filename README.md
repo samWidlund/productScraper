@@ -31,7 +31,7 @@ After years of reselling clothes, I grew tired of manually searching marketplace
 - Apify API (Facebook scraper)
 - Supabase account
 - Telegram Bot token
-- Github account (Automate via github actions)
+- Github account (Github actions)
 
 ## Setup
 
