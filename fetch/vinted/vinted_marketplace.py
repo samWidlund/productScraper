@@ -3,9 +3,9 @@ import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
-from dotenv import load_dotenv
 from notification.telegramBot import notify_product, get_sent_notifications
 from database.database import SupabaseClient
+from fetch.fetch_variables import search_term, price_cap_sek, price_cap_USD
 
 ## inital supabase client
 db = SupabaseClient()
@@ -17,15 +17,15 @@ new_items = 0
 
 scraper = VintedScraper("https://www.vinted.com")
 se_scraper = VintedScraper("https://www.vinted.se")
-items = scraper.search({"search_text": "arcteryx"})
-se_items = se_scraper.search({"search_text": "arcteryx"})
+items = scraper.search({"search_text": search_term})
+se_items = se_scraper.search({"search_text": search_term})
 items.extend(se_items)
 
 print(f"Fetching vinted marketplace... ")
 for item in items:
     print(f"{item.title} - {item.price} {item.currency} - {item.url} - {item.id}")
 
-    if item.currency == "USD" and item.price > 200 or item.currency == "SEK" and item.price > 2000:
+    if item.currency == "USD" and item.price > price_cap_USD or item.currency == "SEK" and item.price > price_cap_sek:
         total_items += 1
         if db.is_new_product("vinted_products", item.id):
             db.add_product("vinted_products", item.id, item.title, item.price, item.currency, item.url)

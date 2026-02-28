@@ -7,6 +7,7 @@ from notification.telegramBot import notify_product, get_sent_notifications
 from fetch.ebay.ebay_api import EbayAPI
 from database.database import SupabaseClient
 import fetch.ebay.config as config
+from fetch.fetch_variables import search_term, price_cap_USD
 
 ## inital supabase client
 db = SupabaseClient()
@@ -23,8 +24,8 @@ ebay = EbayAPI(
 )
 
 products = ebay.search(
-    query="Arcteryx",
-    max_price=100,
+    query=search_term,
+    max_price=price_cap_USD,
     marketplace='US'
 )
 

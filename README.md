@@ -1,29 +1,28 @@
 # Automated product scraping tool for resellers
 
-Automated marketplace scraper that monitors online platforms for products and notifies users via Telegram push notification.
+Automated marketplace scraper that monitors online platforms for products and notifies users via Telegram push notification. Combining multiple scraper APIs into one simple easy-to-use applicaton.
 
 ## Background
+
 After years of reselling clothes, I grew tired of manually searching marketplaces for the best deals. Instead of spending hours doing it myself, I built a system that automates the process and lets software handle the work for me.
 
 ## Features
 
 - Scheduled product fetching across multiple marketplaces
 - Real-time Telegram notifications
-- Product filtering by price and keywords
-- **Planned**: Auto-fill account forms with product info
-- **Planned**: Multi-platform product publishing
-- **Planned**: AI product analysis
+- Product filtering by price and keyword
+- Database integration preventing repeated notifications
 
 ## Supported Platforms
 
 | Platform | Status |
 |----------|--------|
-| Facebook Marketplace | **Working** |
-| eBay | **Working** |
-| Blocket | **Working** |
-| Tradera | **Working** |
-| Vinted | **Working** |
-| Depop | Planned |
+| Facebook Marketplace | **Working** ✅|
+| eBay | **Working** ✅|
+| Blocket | **Working** ✅|
+| Tradera | **Working** ✅|
+| Vinted | **Working** ✅|
+| Depop | Planned 🕜|
 
 ## Requirements
 
@@ -32,13 +31,13 @@ After years of reselling clothes, I grew tired of manually searching marketplace
 - Apify API (Facebook scraper)
 - Supabase account
 - Telegram Bot token
-- Github account (Actions)
+- Github account (Automate via github actions)
 
 ## Setup
 
 ### Installation
 
-1. Clone the repository
+1. Clone the repository: `git clone https://github.com/samWidlund/productScraper.git`
 2. Create and activate a virtual environment
 
    - Linux / macOS (bash / zsh / fish)
@@ -53,7 +52,7 @@ After years of reselling clothes, I grew tired of manually searching marketplace
      .\.venv\Scripts\Activate.ps1
      ```
 
-   > **Note:** Include `.venv/` in `.gitignore` to avoid committing the environment.
+   > **Tip:** Include `.venv/` in `.gitignore` to avoid committing the environment.
 
 3. Install dependencies:
    ```bash
@@ -72,6 +71,32 @@ After years of reselling clothes, I grew tired of manually searching marketplace
    SUPABASE_EMAIL=your_email
    SUPABASE_PASSWORD=your_password
    ```
+### Scraping specifications
+To specify and narrow what kind of products the scraper is fetching, configure the variables in `fetch/fetch_variables.py`:
+```python
+search_term = "Arcteryx" # search word used when scraping each marketplace
+price_cap_sek = 2000 # swedish listings
+price_cap_USD = 200 # non swedish listings
+```
+
+### Telegram bot
+
+1. Open Telegram and search for **BotFather**
+2. Send `/newbot` to create a new bot
+3. Choose a name and username (must end with `bot`)
+4. Copy the **API Token** provided by BotFather
+
+**Get your Chat ID:**
+
+1. Start a conversation with your new bot and send any message
+2. Visit `https://api.telegram.org/bot<TOKEN>/getUpdates` (replace `<TOKEN>` with your bot token)
+3. Find `"chat":{"id":...` in the response - this is your **CHAT_ID**
+
+Add to `.env`:
+```env
+BOT_TOKEN=your_telegram_token
+BOT_CHAT_ID=your_chat_id
+```
 
 ### Running
 
@@ -89,14 +114,14 @@ python fetch/facebook/fb_marketplace.py
 python3 fetch/facebook/fb_marketplace.py
 ```
 
-**Automated via GitHub Actions:**
-Configured to run every 3 hours. See `.github/workflows/workflow.yml`
-> **Note:** When automated, make sure to include .env variables in repository secrets. 
+**Automated:**
+Configured to run every 3 hours via github actions. See `.github/workflows/workflow.yml` \
+> **Note:** Make sure to include .env variables in repository secrets. 
 
 ## Project Structure
 
 ```
-├── fetch/                    # Product fetchers
+├── fetch/                    # Marketplace scrapers
 │   ├── blocket/
 │   ├── depop/
 │   ├── ebay/
@@ -105,7 +130,7 @@ Configured to run every 3 hours. See `.github/workflows/workflow.yml`
 │   └── vinted/
 ├── database/                 # Database operations
 ├── publish/                  # Publishing utilities (currently empty)
-├── notification/             # Bot notification       
+├── notification/             # User bot notificiation       
 └── README.md
 ```
 
@@ -113,7 +138,8 @@ Configured to run every 3 hours. See `.github/workflows/workflow.yml`
 [EbayAPI](https://developer.ebay.com/develop) \
 [TraderaAPI](https://pypi.org/project/tradera_api/) \
 [BlocketAPI](https://blocket-api.se/) \
-[ApifyFacebookAPI](https://apify.com/apify/facebook-pages-scraper)
+[FacebookAPI](https://apify.com/apify/facebook-pages-scraper) \
+[VintedAPI](https://pypi.org/project/vinted-scraper/)
 
 ## License
 
