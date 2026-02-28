@@ -10,7 +10,7 @@ After years of reselling clothes, I grew tired of manually searching marketplace
 
 - Scheduled product fetching across multiple marketplaces
 - Real-time Telegram notifications
-- Product filtering by price and keyword
+- Product filtering by keyword and price
    - One simple search term + price cap across all platforms
 - Database integration preventing repeated notifications
 
