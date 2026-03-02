@@ -122,7 +122,7 @@ python3 fetch/facebook/fb_marketplace.py
 
 **Automated:**
 Configured to run every 3 hours via github actions. See `.github/workflows/workflow.yml`
-> **Note:** Make sure to include .env variables in repository secrets. 
+> **Note:** Make sure to create and include .env variables in environment secrets.
 
 ## Project Structure
 
