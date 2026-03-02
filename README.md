@@ -34,7 +34,7 @@ After years of reselling clothes, I grew tired of manually searching marketplace
 - Telegram Bot token
 - Github account (Github actions)
 
-> **Disclaimer:** This tool relies on third-party APIs (Apify, blocket-api, tradera-api & vinted-api). Usage may be subject to those services' terms of service. Use responsibly and ensure compliance with their policies.
+> **Disclaimer:** This tool relies mostly on third-party APIs (Apify, blocket-api, tradera-api & vinted-api). Usage may be subject to those services' terms of service. Use responsibly and ensure compliance with their policies.
 
 ## Setup
 
