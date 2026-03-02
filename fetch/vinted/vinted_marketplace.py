@@ -15,11 +15,11 @@ db.login()
 total_items = 0
 new_items = 0
 
-scraper = VintedScraper("https://www.vinted.se")
+scraper = VintedScraper("https://www.vinted.com")
 se_scraper = VintedScraper("https://www.vinted.se")
 items = scraper.search({"search_text": search_term})
-# se_items = se_scraper.search({"search_text": search_term})
-# items.extend(se_items)
+se_items = se_scraper.search({"search_text": search_term})
+items.extend(se_items)
 
 print(f"Fetching vinted marketplace... ")
 for item in items:
