@@ -2,7 +2,7 @@ name: productScraper Workflow
 on:
  push:
    branches:
-    - issues/vinted-scraper
+    - issues/vinted_scraper
 
   # workflow_dispatch:  
 #  schedule:
