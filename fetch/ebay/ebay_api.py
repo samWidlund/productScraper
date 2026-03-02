@@ -13,7 +13,7 @@ class EbayAPI:
     PROD_AUTH_URL = "https://api.ebay.com/identity/v1/oauth2/token"
     PROD_API_URL = "https://api.ebay.com/buy/browse/v1"
     
-    MARKETPLACES = {
+    MARKETPLACES = { ## sweden seems to not work
         'SE': 'EBAY_SE',
         'US': 'EBAY_US',
         'UK': 'EBAY_GB',
