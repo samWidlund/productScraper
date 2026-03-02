@@ -15,7 +15,7 @@ db.login()
 total_items = 0
 new_items = 0
 
-scraper = VintedScraper("https://www.vinted.com")
+scraper = VintedScraper("https://www.vinted.se")
 se_scraper = VintedScraper("https://www.vinted.se")
 items = scraper.search({"search_text": search_term})
 # se_items = se_scraper.search({"search_text": search_term})
