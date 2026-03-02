@@ -38,7 +38,10 @@ After years of reselling clothes, I grew tired of manually searching marketplace
 
 ### Installation
 
-1. Clone the repository: `git clone https://github.com/samWidlund/productScraper.git`
+1. Clone the repository: 
+```bash
+git clone https://github.com/samWidlund/productScraper.git
+```
 2. Create and activate a virtual environment
 
    - Linux / macOS (bash / zsh / fish)
