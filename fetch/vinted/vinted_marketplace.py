@@ -18,8 +18,8 @@ new_items = 0
 scraper = VintedScraper("https://www.vinted.com")
 se_scraper = VintedScraper("https://www.vinted.se")
 items = scraper.search({"search_text": search_term})
-se_items = se_scraper.search({"search_text": search_term})
-items.extend(se_items)
+# se_items = se_scraper.search({"search_text": search_term})
+# items.extend(se_items)
 
 print(f"Fetching vinted marketplace... ")
 for item in items:
@@ -29,7 +29,7 @@ for item in items:
         total_items += 1
         if db.is_new_product("vinted_products", item.id):
             db.add_product("vinted_products", item.id, item.title, item.price, item.currency, item.url)
-            notify_product(item.title, item.price, item.currency, item.url)
+            # notify_product(item.title, item.price, item.currency, item.url)
             new_items += 1
 
 sent_notifications = get_sent_notifications()
