@@ -1,6 +1,6 @@
 python-dotenv
 requests
-apify_client
 supabase
+apify_client
 blocket-api==0.4
 vinted_scraper
