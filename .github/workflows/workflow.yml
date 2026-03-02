@@ -51,7 +51,7 @@ jobs:
       - name: Run blocket_marketplace.py
         run: python fetch/blocket/blocket_marketplace.py
 
-  fetch-tradera:
+  fetch-tradera: ## requires different httpx version than the other scrapers, therefore seperate job
     runs-on: ubuntu-latest
     environment: telegramApi
     env:
