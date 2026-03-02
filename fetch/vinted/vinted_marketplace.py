@@ -19,10 +19,9 @@ scraper = VintedScraper("https://www.vinted.com")
 se_scraper = VintedScraper("https://www.vinted.se")
 items = scraper.search({"search_text": search_term})
 se_items = se_scraper.search({"search_text": search_term})
-items.extend(se_items)
 
 print(f"Fetching vinted marketplace... ")
-for item in items:
+for item in items + se_items:
     print(f"{item.title} - {item.price} {item.currency} - {item.url} - {item.id}")
 
     if item.currency == "USD" and item.price > price_cap_USD or item.currency == "SEK" and item.price > price_cap_sek:
