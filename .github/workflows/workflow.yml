@@ -1,13 +1,13 @@
 name: productScraper Workflow
-on:
+on: 
  push:
-   branches:
-    - issues/vinted_scraper
+    branches:
+      - main
 
-  # workflow_dispatch:  
+      # workflow_dispatch:  
 #  schedule:
     # - cron: '0 */3 * * *'
-   
+
 jobs:
   fetch-products:
     runs-on: ubuntu-latest
