@@ -80,9 +80,16 @@ git clone https://github.com/samWidlund/productScraper.git
 ### Scraping specifications
 To specify and narrow what kind of products the scraper is fetching, configure the variables in `fetch/fetch_variables.py`:
 ```python
-search_term = "Arcteryx" # search word used when scraping each marketplace
-price_cap_sek = 2000 # swedish listings
-price_cap_USD = 200 # non swedish listings
+# search word used when scraping marketplace
+search_term = "Arcteryx"
+
+# swedish listings
+price_cap_sek = 2000
+min_price_sek = 500
+
+# non swedish listings
+price_cap_USD = 200
+min_price_USD = 50
 ```
 
 ### Telegram bot
