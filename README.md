@@ -114,17 +114,17 @@ BOT_CHAT_ID=your_chat_id
 ### Running
 
 **Locally:**
-
+> **Note:** Replace [PLATFORM_NAME] with the correspondig platform e.g. facebook and [FETCH_SCRIPT] with the python script e.g. `fb_marketplace.py`
 - Windows
 
 ```powershell
-python fetch/facebook/fb_marketplace.py
+python fetch/[PLATFORM_NAME]/[FETCH_SCRIPT].py
 ```
 
 - Linux / macOS
 
 ```bash
-python3 fetch/facebook/fb_marketplace.py
+python3 fetch/[PLATFORM_NAME]/[FETCH_SCRIPT].py
 ```
 
 **Automated:**
