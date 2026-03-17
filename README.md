@@ -85,11 +85,11 @@ search_term = "Arcteryx"
 
 # swedish listings
 price_cap_sek = 2000
-min_price_sek = 500
+min_price_sek = 500 # not in development yet
 
 # non swedish listings
 price_cap_USD = 200
-min_price_USD = 50
+min_price_USD = 50 # not in development yet
 ```
 
 ### Telegram bot
@@ -114,7 +114,7 @@ BOT_CHAT_ID=your_chat_id
 ### Running
 
 **Locally:**
-> **Note:** Replace [PLATFORM_NAME] with the correspondig platform e.g. facebook and [FETCH_SCRIPT] with the python script e.g. `fb_marketplace.py`
+> **Note:** Replace [PLATFORM_NAME] with the correspondig platform e.g. `facebook` and [FETCH_SCRIPT] with the python script e.g. `fb_marketplace.py`
 - Windows
 
 ```powershell
