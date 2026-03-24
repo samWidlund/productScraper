@@ -64,6 +64,7 @@ git clone https://github.com/samWidlund/productScraper.git
    ```bash
    pip install -r requirements.txt
    ```
+> **Note:** Currenty the package tradera_api is not included in the ``requirements.txt`` because of a httpx conflict with blocket_api. Tradera fetcher run as a seperate job in workflow, therefore it still works with github actions.
 
 4. Create `.env` file with your credentials:
    ```env
