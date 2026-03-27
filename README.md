@@ -112,6 +112,103 @@ BOT_TOKEN=your_telegram_token
 BOT_CHAT_ID=your_chat_id
 ```
 
+### Database
+
+This project uses Supabase (PostgreSQL) to store scraped products and prevent duplicate notifications.
+
+**Create a Supabase project:**
+
+1. Sign up at [supabase.com](https://supabase.com)
+2. Create a new project
+3. Go to **Settings > API** and copy:
+   - `Project URL` → `SUPABASE_URL`
+   - `anon public` key → `SUPABASE_KEY`
+4. Go to **Authentication > Users** and create a user or use an existing one
+5. Add the user's email and password to `.env`:
+   ```env
+   SUPABASE_URL=your_supabase_url
+   SUPABASE_KEY=your_supabase_key
+   SUPABASE_EMAIL=your_email
+   SUPABASE_PASSWORD=your_password
+   ```
+
+**Create product tables:**
+
+Each marketplace requires its own table. Create the following tables in your Supabase SQL editor:
+
+```sql
+CREATE TABLE ebay_products (
+    id BIGSERIAL PRIMARY KEY,
+    itemid TEXT UNIQUE NOT NULL,
+    title TEXT NOT NULL,
+    price REAL NOT NULL,
+    currency TEXT NOT NULL,
+    url TEXT NOT NULL,
+    user_id UUID REFERENCES auth.users NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+CREATE TABLE blocket_products (
+    id BIGSERIAL PRIMARY KEY,
+    itemid TEXT UNIQUE NOT NULL,
+    title TEXT NOT NULL,
+    price REAL NOT NULL,
+    currency TEXT NOT NULL,
+    url TEXT NOT NULL,
+    user_id UUID REFERENCES auth.users NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+CREATE TABLE tradera_products (
+    id BIGSERIAL PRIMARY KEY,
+    itemid TEXT UNIQUE NOT NULL,
+    title TEXT NOT NULL,
+    price REAL NOT NULL,
+    currency TEXT NOT NULL,
+    url TEXT NOT NULL,
+    user_id UUID REFERENCES auth.users NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+CREATE TABLE vinted_products (
+    id BIGSERIAL PRIMARY KEY,
+    itemid TEXT UNIQUE NOT NULL,
+    title TEXT NOT NULL,
+    price REAL NOT NULL,
+    currency TEXT NOT NULL,
+    url TEXT NOT NULL,
+    user_id UUID REFERENCES auth.users NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+CREATE TABLE facebook_products (
+    id BIGSERIAL PRIMARY KEY,
+    itemid TEXT UNIQUE NOT NULL,
+    title TEXT NOT NULL,
+    price REAL NOT NULL,
+    currency TEXT NOT NULL,
+    url TEXT NOT NULL,
+    user_id UUID REFERENCES auth.users NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+```
+
+Enable **Row Level Security (RLS)** and add policies to ensure users can only access their own data:
+
+```sql
+ALTER TABLE ebay_products ENABLE ROW LEVEL SECURITY;
+ALTER TABLE blocket_products ENABLE ROW LEVEL SECURITY;
+ALTER TABLE tradera_products ENABLE ROW LEVEL SECURITY;
+ALTER TABLE vinted_products ENABLE ROW LEVEL SECURITY;
+ALTER TABLE facebook_products ENABLE ROW LEVEL SECURITY;
+
+-- Example policy for each table (replace table name as needed)
+CREATE POLICY "Users can only see their own data" ON ebay_products
+    FOR ALL USING (auth.uid() = user_id);
+```
+
+> **Note:** Supabase automatically pauses the project/database after 7 days of inactivity. Visit [supabase.com](https://supabase.com) to restore your database, may take minutes up to several hours.
+
 ### Running
 
 **Locally:**
