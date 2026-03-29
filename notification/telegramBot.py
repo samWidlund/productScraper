@@ -15,15 +15,16 @@ def notify_product(title, price, currency, url, auction_type=None):
     if not TOKEN or not CHAT_ID:
         print("error: BOT_TOKEN or BOT_CHAT_ID could not be found as environment variables")
         return False
-
+    
     # telegram message
-    text = f"{price} {currency}\n{title}\n{url}"
+    hyperlink = f"[link]({url})"
+    text = f"{price} {currency}\n{title}\n{hyperlink}"
     if auction_type:
         text += f"\nType: {auction_type}"
     url_api = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
     
     try:
-        r = requests.post(url_api, data={"chat_id": CHAT_ID, "text": text}, timeout=10)
+        r = requests.post(url_api, data={"chat_id": CHAT_ID, "text": text, "parse_mode": "Markdown"}, timeout=10)
         r.raise_for_status() # throw exception when http error
         
         response = r.json()
