@@ -17,7 +17,7 @@ def notify_product(title, price, currency, url, auction_type=None):
         return False
     
     # telegram message
-    hyperlink = f"[link]({url})"
+    hyperlink = f"[Link]({url})"
     text = f"{price} {currency}\n{title}\n{hyperlink}"
     if auction_type:
         text += f"\nType: {auction_type}"
