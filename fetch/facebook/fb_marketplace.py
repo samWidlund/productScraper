@@ -16,7 +16,7 @@ client = ApifyClient(APIFY_TOKEN)
 # define actor input
 run_input = {
     "startUrls": [
-        { "url": f"https://www.facebook.com/marketplace/110976692260411/search?query={search_term}" }, # arcteryx in sweden
+        { "url": f"https://www.facebook.com/marketplace/110976692260411/search?query={search_term}" }, # defined in fetch_variables.py
     ],
     "resultsLimit": 20,
 }
