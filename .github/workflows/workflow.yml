@@ -106,5 +106,5 @@ jobs:
         run: pip install -r requirements.txt
       
       - name: Run fb_marketplace.py
-        run: python fetch/facebook/fbs_marketplace.py
+        run: python fetch/facebook/fb_marketplace.py
 
