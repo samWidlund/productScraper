@@ -36,12 +36,15 @@ print("Fetching products from Facebook Marketplace...")
 
 # fetch produkts n notify
 for item in client.dataset(run["defaultDatasetId"]).iterate_items():
+    if not item.get('listing_price'):
+        print(f"Skipping item without price: {item.get('marketplace_listing_title', 'unknown')}")
+        continue
     print(f"Found item: {item['marketplace_listing_title']} at {item['listing_price']['amount']}")
     total_items += 1
 
     if db.is_new_product("facebook_products", item['id']): # notify user and and product to db if new
-        db.add_product("facebook_products", item['id'], item['marketplace_listing_title'], item['listing_price'], item['amount'], item['listingUrl'])
-        notify_product(item['marketplace_listing_title'], item['listing_price'], item['amount'], item['listingUrl'])
+        db.add_product("facebook_products", item['id'], item['marketplace_listing_title'], item['listing_price'], item['listing_price']['amount'], item['listingUrl'])
+        notify_product(item['marketplace_listing_title'], item['listing_price'], item['listing_price']['amount'], item['listingUrl'])
         new_items += 1
 
 sent_notifications = get_sent_notifications()
