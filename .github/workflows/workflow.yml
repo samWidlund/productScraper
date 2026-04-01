@@ -9,47 +9,6 @@ on:
     # - cron: '0 */3 * * *'
 
 jobs:
-  fetch-products:
-    runs-on: ubuntu-latest
-    environment: telegramApi
-    env:
-      BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
-      BOT_CHAT_ID: ${{ secrets.BOT_CHAT_ID }}
-      EBAY_CLIENT_ID: ${{ secrets.EBAY_CLIENT_ID }}
-      EBAY_CLIENT_SECRET: ${{ secrets.EBAY_CLIENT_SECRET }}
-      APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
-      SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-      SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
-      SUPABASE_EMAIL: ${{ secrets.SUPABASE_EMAIL }}
-      SUPABASE_PASSWORD: ${{ secrets.SUPABASE_PASSWORD }}
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5 
-        with:
-          python-version: '3.14'
-          cache: 'pip'
-
-      - name: Upgrade pip
-        run: pip install --upgrade pip 
-
-      - name: Install dependencies
-        run: pip install -r requirements.txt
-
-      - name: Run vinted_marketplace.py
-        run: python fetch/vinted/vinted_marketplace.py
-
-      - name: Run blocket_marketplace.py
-        run: python fetch/blocket/blocket_marketplace.py
-
-      # - name: Run ebay_marketplace.py
-      #   run: python fetch/ebay/ebay_marketplace.py
-     
-      # - name: Run fb_marketplace.py needs to be run with proxy served which is not set up, gets blocked 
-      #   run: python fetch/facebook/fb_marketplace.py
-
   fetch-tradera:
     runs-on: ubuntu-latest
     environment: telegramApi
@@ -89,6 +48,7 @@ jobs:
         SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
         SUPABASE_EMAIL: ${{ secrets.SUPABASE_EMAIL }}
         SUPABASE_PASSWORD: ${{ secrets.SUPABASE_PASSWORD }}
+        APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -108,3 +68,92 @@ jobs:
       - name: Run fb_marketplace.py
         run: python fetch/facebook/fb_marketplace.py
 
+  fetch-blocket:
+    runs-on: ubuntu-latest
+    environment: telegramApi
+    env:
+        BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+        BOT_CHAT_ID: ${{ secrets.BOT_CHAT_ID }}
+        SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+        SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+        SUPABASE_EMAIL: ${{ secrets.SUPABASE_EMAIL }}
+        SUPABASE_PASSWORD: ${{ secrets.SUPABASE_PASSWORD }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5 
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Upgrade pip
+        run: pip install --upgrade pip
+
+      - name: Install requirements
+        run: pip install -r requirements.txt
+      
+      - name: Run blocket_marketplace.py
+        run: python fetch/blocket/blocket_marketplace.py
+
+  fetch-ebay:
+    runs-on: ubuntu-latest
+    environment: telegramApi
+    env:
+        BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+        BOT_CHAT_ID: ${{ secrets.BOT_CHAT_ID }}
+        SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+        SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+        SUPABASE_EMAIL: ${{ secrets.SUPABASE_EMAIL }}
+        SUPABASE_PASSWORD: ${{ secrets.SUPABASE_PASSWORD }}
+        EBAY_CLIENT_ID: ${{ secrets.EBAY_CLIENT_ID }}
+        EBAY_CLIENT_SECRET: ${{ secrets.EBAY_CLIENT_SECRET }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5 
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Upgrade pip
+        run: pip install --upgrade pip
+
+      - name: Install requirements
+        run: pip install -r requirements.txt
+      
+      - name: Run ebay_marketplace.py
+        run: python fetch/ebay/ebay_marketplace.py
+
+  fetch-vinted:
+    runs-on: ubuntu-latest
+    environment: telegramApi
+    env:
+        BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+        BOT_CHAT_ID: ${{ secrets.BOT_CHAT_ID }}
+        SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+        SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+        SUPABASE_EMAIL: ${{ secrets.SUPABASE_EMAIL }}
+        SUPABASE_PASSWORD: ${{ secrets.SUPABASE_PASSWORD }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5 
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Upgrade pip
+        run: pip install --upgrade pip
+
+      - name: Install requirements
+        run: pip install -r requirements.txt
+      
+      - name: Run vinted_marketplace.py
+        run: python fetch/vinted/vinted_marketplace.py
