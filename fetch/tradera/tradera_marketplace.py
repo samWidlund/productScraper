@@ -91,7 +91,7 @@ for st in search_types:
         # check DB and add + notify if new
         if db.is_new_product("tradera_products", str(_id)):
             db.add_product("tradera_products", str(_id), title, price_val, currency or "SEK", url)
-            notify_product(title, price_val, currency or "SEK", url, auction_type=st.name)
+            notify_product("tradera", title, price_val, currency or "SEK", url, auction_type=st.name)
             new_items += 1
 
 print(f"Total items found: {total_items}")

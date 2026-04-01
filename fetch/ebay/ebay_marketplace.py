@@ -37,7 +37,7 @@ for product in products:
 
     if db.is_new_product("ebay_products", product['id']): # notify user and and product to db if new
         db.add_product("ebay_products", product['id'], product['title'], product['price'], product['currency'], product['url'])
-        notify_product(product['title'], product['price'], product['currency'], product['url'])
+        notify_product("ebay",product['title'], product['price'], product['currency'], product['url'])
         new_items += 1
 sent_notifications = get_sent_notifications()
 print(f"Total items found: {total_items}")

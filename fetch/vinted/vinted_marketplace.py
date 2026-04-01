@@ -11,7 +11,7 @@ from fetch.fetch_variables import search_term, price_cap_sek, price_cap_USD
 db = SupabaseClient()
 db.login()
 
-# # counter variables
+## counter variables
 total_items = 0
 new_items = 0
 
@@ -28,7 +28,7 @@ for item in items + se_items:
         total_items += 1
         if db.is_new_product("vinted_products", item.id):
             db.add_product("vinted_products", item.id, item.title, item.price, item.currency, item.url)
-            # notify_product(item.title, item.price, item.currency, item.url)
+            notify_product("vinted", item.title, item.price, item.currency, item.url)
             new_items += 1
 
 sent_notifications = get_sent_notifications()

@@ -81,7 +81,7 @@ for product in products:
 
     if db.is_new_product("blocket_products", product_id): # notify user and and product to db if new
         db.add_product("blocket_products", product_id, heading, amount, currency, url)
-        notify_product(heading, amount, currency, url)
+        notify_product("blocket",heading, amount, currency, url)
         new_items += 1
         
 sent_notifications = get_sent_notifications()
