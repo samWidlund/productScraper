@@ -44,7 +44,7 @@ for item in client.dataset(run["defaultDatasetId"]).iterate_items():
 
     if db.is_new_product("facebook_products", item['id']): # notify user and and product to db if new
         db.add_product("facebook_products", item['id'], item['marketplace_listing_title'], item['listing_price'], item['listing_price']['amount'], item['listingUrl'])
-        notify_product(item['marketplace_listing_title'], item['listing_price'], item['listing_price']['amount'], item['listingUrl'])
+        notify_product(item['marketplace_listing_title'], item['listing_price']['amount'], item['listing_price'].get('currency', 'SEK'), item['listingUrl'])
         new_items += 1
 
 sent_notifications = get_sent_notifications()
