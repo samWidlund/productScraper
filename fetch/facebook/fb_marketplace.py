@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 from apify_client import ApifyClient
 from notification.telegramBot import notify_product, get_sent_notifications
 from database.database import SupabaseClient
-from fetch.fetch_variables import search_term
+from fetch.fetch_variables import search_term, max_price_sek
 
 load_dotenv()
 APIFY_TOKEN=os.getenv("APIFY_TOKEN")
@@ -39,6 +39,12 @@ for item in client.dataset(run["defaultDatasetId"]).iterate_items():
     if not item.get('listing_price'):
         print(f"Skipping item without price: {item.get('marketplace_listing_title', 'unknown')}")
         continue
+
+    item_price = item['listing_price']['amount']
+    if item_price > max_price_sek:
+        print(f"Skipping item over max_price_sek: {item['marketplace_listing_title']} at {item_price}")
+        continue
+
     print(f"Found item: {item['marketplace_listing_title']} at {item['listing_price']['amount']}")
     total_items += 1
 
