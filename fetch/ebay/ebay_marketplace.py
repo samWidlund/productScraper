@@ -1,4 +1,3 @@
-import os
 import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
@@ -7,7 +6,7 @@ from notification.telegramBot import notify_product, get_sent_notifications
 from fetch.ebay.ebay_api import EbayAPI
 from database.database import SupabaseClient
 import fetch.ebay.config as config
-from fetch.fetch_variables import search_term, max_price_usd
+from fetch.fetch_variables import search_term, max_price_usd, min_price_usd
 
 ## inital supabase client
 db = SupabaseClient()
@@ -26,6 +25,7 @@ ebay = EbayAPI(
 products = ebay.search(
     query=search_term,
     max_price=max_price_usd,
+    min_price=min_price_usd,
     marketplace='US'
 )
 

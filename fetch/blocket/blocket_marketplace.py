@@ -5,7 +5,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 from notification.telegramBot import notify_product, get_sent_notifications
 from database.database import SupabaseClient
-from fetch.fetch_variables import search_term, max_price_sek
+from fetch.fetch_variables import search_term, max_price_sek, min_price_sek
 from blocket_api import (
     BlocketAPI,
     SortOrder,
@@ -73,7 +73,7 @@ for product in products:
     url = product.get('canonical_url', 'N/A')
     
     print(f"Title: {heading}")
-    if amount > max_price_sek:
+    if amount > max_price_sek or amount < min_price_sek:
         continue
 
     print(f"Price: {amount} {currency}")

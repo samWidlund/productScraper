@@ -8,7 +8,7 @@ from tradera_api.tradera import TraderaAPI, BASE_URL, AuctionType
 import json
 from notification.telegramBot import notify_product, get_sent_notifications
 from database.database import SupabaseClient
-from fetch.fetch_variables import search_term, max_price_sek
+from fetch.fetch_variables import search_term, max_price_sek, min_price_sek
 
 api = TraderaAPI()
 
@@ -70,7 +70,7 @@ total_items = 0
 new_items = 0
 
 for st in search_types:
-    res = api.search(query=search_term, price=(0, max_price_sek), auction_type=st)
+    res = api.search(query=search_term, price=(min_price_sek, max_price_sek), auction_type=st)
     items = find_items(res)
     if not items:
         print(f"No items found for type {st.name} — showing a part of response:")

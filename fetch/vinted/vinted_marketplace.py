@@ -5,7 +5,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 from notification.telegramBot import notify_product, get_sent_notifications
 from database.database import SupabaseClient
-from fetch.fetch_variables import search_term, max_price_sek, max_price_usd
+from fetch.fetch_variables import search_term, max_price_sek, max_price_usd, min_price_sek, min_price_usd
 
 ## inital supabase client
 db = SupabaseClient()
@@ -20,16 +20,20 @@ se_scraper = VintedScraper("https://www.vinted.se")
 items = scraper.search({"search_text": search_term})
 se_items = se_scraper.search({"search_text": search_term})
 
-print(f"Fetching vinted marketplace... ")
+print("Fetching vinted marketplace...")
 for item in items + se_items:
     print(f"{item.title} - {item.price} {item.currency} - {item.url} - {item.id}")
 
-    if item.currency == "USD" and item.price > max_price_usd or item.currency == "SEK" and item.price > max_price_sek:
-        total_items += 1
-        if db.is_new_product("vinted_products", item.id):
-            db.add_product("vinted_products", item.id, item.title, item.price, item.currency, item.url)
-            notify_product("vinted", item.title, item.price, item.currency, item.url)
-            new_items += 1
+    if item.currency == "USD" and (item.price > max_price_usd or item.price < min_price_usd):
+        continue
+    if item.currency == "SEK" and (item.price > max_price_sek or item.price < min_price_sek):
+        continue
+
+    total_items += 1
+    if db.is_new_product("vinted_products", item.id):
+        db.add_product("vinted_products", item.id, item.title, item.price, item.currency, item.url)
+        notify_product("vinted", item.title, item.price, item.currency, item.url)
+        new_items += 1
 
 sent_notifications = get_sent_notifications()
 print(f"Total items found: {total_items}")
