@@ -1,5 +1,5 @@
 # search word used when scraping marketplace
-search_term = "arcteryx"
+search_term = "salomon adv skin 12"
 
 # swedish listings
 price_cap_sek = 2000
