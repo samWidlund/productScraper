@@ -40,7 +40,7 @@ for item in client.dataset(run["defaultDatasetId"]).iterate_items():
         print(f"Skipping item without price: {item.get('marketplace_listing_title', 'unknown')}")
         continue
 
-    item_price = item['listing_price']['amount']
+    item_price = float(item['listing_price']['amount'])
     if item_price > max_price_sek or item_price < min_price_sek:
         print(f"Skipping item outside price range: {item['marketplace_listing_title']} at {item_price}")
         continue
