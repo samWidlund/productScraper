@@ -93,12 +93,12 @@ To specify and narrow what kind of products the scraper is fetching, configure t
 search_term = "Arcteryx"
 
 # swedish listings
-price_cap_sek = 2000
+max_price_sek = 2000
 min_price_sek = 500 # not in development yet
 
 # non swedish listings
-price_cap_USD = 200
-min_price_USD = 50 # not in development yet
+max_price_usd = 200
+min_price_usd = 50 # not in development yet
 ```
 
 ### Telegram bot
