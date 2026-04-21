@@ -4,7 +4,7 @@ This file provides guidelines for AI agents operating in this repository.
 
 ## Project Overview
 
-ProductScraper is an automated marketplace scraper that monitors online platforms (Facebook, eBay, Blocket, Tradera, Vinted, Depop) for products and notifies users via Telegram push notifications. It uses Python with Supabase for database storage.
+ProductScraper is an automated marketplace scraper that monitors online platforms (Facebook, eBay, Blocket, Tradera, Vinted) for products and notifies users via Telegram push notifications. It uses Python with Supabase for database storage.
 
 ## Build, Lint, and Test Commands
 
@@ -163,7 +163,6 @@ class SupabaseClient:
 productScraper/
 ├── fetch/                    # Marketplace scrapers
 │   ├── blocket/
-│   ├── depop/
 │   ├── ebay/
 │   │   ├── ebay_api.py       # API wrapper
 │   │   ├── ebay_marketplace.py  # Main scraper entry point

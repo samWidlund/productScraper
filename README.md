@@ -242,7 +242,6 @@ Configured to run every 3 hours via github actions. See `.github/workflows/workf
 ```
 ├── fetch/                    # Marketplace scrapers
 │   ├── blocket/
-│   ├── depop/
 │   ├── ebay/
 │   ├── facebook/
 │   ├── tradera/
