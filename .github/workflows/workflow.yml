@@ -6,6 +6,25 @@ on:
 
   schedule:
     - cron: '30  10  *  *  *'
+    
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Marketplace to fetch'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+        - blocket
+        - ebay
+        - facebook
+        - tradera
+        - vinted
+
+      # fetch_variables:
+      #   description: 'Search term to fetch'
+      #   required: false
+      #   type: string
 
 jobs:
   fetch-tradera:
