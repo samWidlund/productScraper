@@ -21,8 +21,8 @@ on:
         - tradera
         - vinted
 
-      fetch_variable:
-        description: 'Search term to fetch'
+      search_term:
+        description: 'search_term'
         required: false
         type: string
 
