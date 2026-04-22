@@ -16,13 +16,23 @@ on:
         required: false
         type: string
 
-      minPrice:
-        description: 'min_price'
+      minPriceSek:
+        description: 'min_price_sek'
         required: false
         type: string
 
-      maxPrice:
-        description: 'max_price'
+      maxPriceSek:
+        description: 'max_price_sek'
+        required: false
+        type: string
+
+      minPriceUSD:
+        description: 'min_price_usd'
+        required: false
+        type: string
+
+      maxPriceUSD:
+        description: 'max_price_usd'
         required: false
         type: string
 
