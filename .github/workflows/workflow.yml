@@ -9,22 +9,53 @@ on:
 
   workflow_dispatch:
     inputs:
-      search_term:
+
+      # fetch parameters, default is defined in fetch/fetch_variables.py
+      searchTerm:
         description: 'search_term'
         required: false
         type: string
 
-      logLevel:
-        description: 'Choose marketplace (optional)'
+      minPrice:
+        description: 'min_price'
         required: false
-        default: 'all'
-        type: choice
-        options:
-        - blocket
-        - ebay
-        - facebook
-        - tradera
-        - vinted
+        type: string
+
+      maxPrice:
+        description: 'max_price'
+        required: false
+        type: string
+
+      # optional option of choosing which marketplaces to fetch from, default is all
+      fetchBlocket:
+        description: 'Fetch Blocket (optional)'
+        required: false
+        type: boolean
+        default: true
+      
+      fetchEbay:
+        description: 'Fetch Ebay (optional)'
+        required: false
+        type: boolean
+        default: true
+      
+      fetchFacebook:
+        description: 'Fetch Facebook (optional)'
+        required: false
+        type: boolean
+        default: true
+      
+      fetchTradera:
+        description: 'Fetch Tradera (optional)'
+        required: false
+        type: boolean
+        default: true
+      
+      fetchVinted:
+        description: 'Fetch Vinted (optional)'
+        required: false
+        type: boolean
+        default: true
 
 jobs:
   fetch-tradera:
