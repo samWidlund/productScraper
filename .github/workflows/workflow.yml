@@ -69,6 +69,7 @@ on:
 
 jobs:
   fetch-tradera:
+    if: inputs.fetchTradera != false
     runs-on: ubuntu-latest
     environment: telegramApi
     env:
@@ -78,6 +79,9 @@ jobs:
         SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
         SUPABASE_EMAIL: ${{ secrets.SUPABASE_EMAIL }}
         SUPABASE_PASSWORD: ${{ secrets.SUPABASE_PASSWORD }}
+        SEARCH_TERM: ${{ inputs.searchTerm || '' }}
+        MIN_PRICE_SEK: ${{ inputs.minPriceSEK || '' }}
+        MAX_PRICE_SEK: ${{ inputs.maxPriceSEK || '' }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -98,6 +102,7 @@ jobs:
         run: python fetch/tradera/tradera_marketplace.py
 
   fetch-facebook:
+    if: inputs.fetchFacebook != false
     runs-on: ubuntu-latest
     environment: telegramApi
     env:
@@ -108,6 +113,9 @@ jobs:
         SUPABASE_EMAIL: ${{ secrets.SUPABASE_EMAIL }}
         SUPABASE_PASSWORD: ${{ secrets.SUPABASE_PASSWORD }}
         APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+        SEARCH_TERM: ${{ inputs.searchTerm || '' }}
+        MIN_PRICE_SEK: ${{ inputs.minPriceSEK || '' }}
+        MAX_PRICE_SEK: ${{ inputs.maxPriceSEK || '' }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -128,6 +136,7 @@ jobs:
         run: python fetch/facebook/fb_marketplace.py
 
   fetch-blocket:
+    if: inputs.fetchBlocket != false
     runs-on: ubuntu-latest
     environment: telegramApi
     env:
@@ -137,6 +146,9 @@ jobs:
         SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
         SUPABASE_EMAIL: ${{ secrets.SUPABASE_EMAIL }}
         SUPABASE_PASSWORD: ${{ secrets.SUPABASE_PASSWORD }}
+        SEARCH_TERM: ${{ inputs.searchTerm || '' }}
+        MIN_PRICE_SEK: ${{ inputs.minPriceSEK || '' }}
+        MAX_PRICE_SEK: ${{ inputs.maxPriceSEK || '' }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -157,6 +169,7 @@ jobs:
         run: python fetch/blocket/blocket_marketplace.py
 
   fetch-ebay:
+    if: inputs.fetchEbay != false
     runs-on: ubuntu-latest
     environment: telegramApi
     env:
@@ -168,7 +181,9 @@ jobs:
         SUPABASE_PASSWORD: ${{ secrets.SUPABASE_PASSWORD }}
         EBAY_CLIENT_ID: ${{ secrets.EBAY_CLIENT_ID }}
         EBAY_CLIENT_SECRET: ${{ secrets.EBAY_CLIENT_SECRET }}
-
+        SEARCH_TERM: ${{ inputs.searchTerm || '' }}
+        MIN_PRICE_USD: ${{ inputs.minPriceUSD || '' }}
+        MAX_PRICE_USD: ${{ inputs.maxPriceUSD || '' }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -189,6 +204,7 @@ jobs:
         run: python fetch/ebay/ebay_marketplace.py
 
   fetch-vinted:
+    if: inputs.fetchVinted != false
     runs-on: ubuntu-latest
     environment: telegramApi
     env:
@@ -198,6 +214,11 @@ jobs:
         SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
         SUPABASE_EMAIL: ${{ secrets.SUPABASE_EMAIL }}
         SUPABASE_PASSWORD: ${{ secrets.SUPABASE_PASSWORD }}
+        SEARCH_TERM: ${{ inputs.searchTerm || '' }}
+        MIN_PRICE_SEK: ${{ inputs.minPriceSEK || '' }}
+        MAX_PRICE_SEK: ${{ inputs.maxPriceSEK || '' }}
+        MIN_PRICE_USD: ${{ inputs.minPriceUSD || '' }}
+        MAX_PRICE_USD: ${{ inputs.maxPriceUSD || '' }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
