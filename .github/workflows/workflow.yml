@@ -16,12 +16,12 @@ on:
         required: false
         type: string
 
-      minPriceSek:
+      minPriceSEK:
         description: 'min_price_sek'
         required: false
         type: string
 
-      maxPriceSek:
+      maxPriceSEK:
         description: 'max_price_sek'
         required: false
         type: string
