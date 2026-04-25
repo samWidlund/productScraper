@@ -38,31 +38,31 @@ on:
 
       # optional option of choosing which marketplaces to fetch from, default is all
       fetchBlocket:
-        description: 'Fetch Blocket (optional)'
-        required: false
+        description: 'Fetch Blocket'
+        equired: false
         type: boolean
         default: true
       
       fetchEbay:
-        description: 'Fetch Ebay (optional)'
+        description: 'Fetch Ebay (USD)'
         required: false
         type: boolean
         default: true
       
       fetchFacebook:
-        description: 'Fetch Facebook (optional)'
+        description: 'Fetch Facebook'
         required: false
         type: boolean
         default: true
       
       fetchTradera:
-        description: 'Fetch Tradera (optional)'
+        description: 'Fetch Tradera'
         required: false
         type: boolean
         default: true
       
       fetchVinted:
-        description: 'Fetch Vinted (optional)'
+        description: 'Fetch Vinted'
         required: false
         type: boolean
         default: true
