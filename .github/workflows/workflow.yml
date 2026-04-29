@@ -39,7 +39,7 @@ on:
       # optional option of choosing which marketplaces to fetch from, default is all
       fetchBlocket:
         description: 'Fetch Blocket'
-        equired: false
+        required: false
         type: boolean
         default: true
       
