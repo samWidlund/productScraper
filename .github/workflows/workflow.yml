@@ -69,7 +69,7 @@ on:
 
 jobs:
   fetch-tradera:
-    if: inputs.fetchTradera != false
+    if: github.event_name == 'schedule' || inputs.fetchTradera != false
     runs-on: ubuntu-latest
     environment: telegramApi
     env:
@@ -102,7 +102,7 @@ jobs:
         run: python fetch/tradera/tradera_marketplace.py
 
   fetch-facebook:
-    if: inputs.fetchFacebook != false
+    if: github.event_name == 'schedule' || inputs.fetchFacebook != false
     runs-on: ubuntu-latest
     environment: telegramApi
     env:
@@ -136,7 +136,7 @@ jobs:
         run: python fetch/facebook/fb_marketplace.py
 
   fetch-blocket:
-    if: inputs.fetchBlocket != false
+    if: github.event_name == 'schedule' || inputs.fetchBlocket != false
     runs-on: ubuntu-latest
     environment: telegramApi
     env:
@@ -169,7 +169,7 @@ jobs:
         run: python fetch/blocket/blocket_marketplace.py
 
   fetch-ebay:
-    if: inputs.fetchEbay != false
+    if: github.event_name == 'schedule' || inputs.fetchEbay != false
     runs-on: ubuntu-latest
     environment: telegramApi
     env:
@@ -204,7 +204,7 @@ jobs:
         run: python fetch/ebay/ebay_marketplace.py
 
   fetch-vinted:
-    if: inputs.fetchVinted != false
+    if: github.event_name == 'schedule' || inputs.fetchVinted != false
     runs-on: ubuntu-latest
     environment: telegramApi
     env:
