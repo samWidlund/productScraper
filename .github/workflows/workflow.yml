@@ -1,9 +1,5 @@
 name: productScraper Workflow
-on: 
-  push:
-    branches:
-      - main
-
+on:
   schedule:
     - cron: '30  10  *  *  *'
 
