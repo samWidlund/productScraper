@@ -43,7 +43,7 @@ on:
         description: 'Fetch Ebay (USD)'
         required: false
         type: boolean
-        default: true
+        default: false # will not be run by default
       
       fetchFacebook:
         description: 'Fetch Facebook'
