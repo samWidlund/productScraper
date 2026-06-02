@@ -165,7 +165,7 @@ jobs:
         run: python fetch/blocket/blocket_marketplace.py
 
   fetch-ebay:
-    if: github.event_name == 'schedule' || inputs.fetchEbay != false
+    if: inputs.fetchEbay != false
     runs-on: ubuntu-latest
     environment: telegramApi
     env:
