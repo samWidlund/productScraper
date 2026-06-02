@@ -49,15 +49,15 @@ def main():
     total_items = 0
     new_items = 0
 
-    default_dataset_id = run.defaultDatasetId
-    if not default_dataset_id:
+    default_dataset = run.default_dataset_id
+    if not default_dataset:
         print("error: no defaultDatasetId in Apify run response")
         sys.exit(1)
 
     print("Fetching products from Facebook Marketplace...")
 
     try:
-        items = client.dataset(default_dataset_id).iterate_items()
+        items = client.dataset(default_dataset).iterate_items()
     except Exception as e:
         print(f"error: failed to access Apify dataset: {e}")
         sys.exit(1)
