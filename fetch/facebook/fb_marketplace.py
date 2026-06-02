@@ -49,7 +49,7 @@ def main():
     total_items = 0
     new_items = 0
 
-    default_dataset_id = run.get("defaultDatasetId")
+    default_dataset_id = run.defaultDatasetId
     if not default_dataset_id:
         print("error: no defaultDatasetId in Apify run response")
         sys.exit(1)
