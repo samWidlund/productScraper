@@ -6,32 +6,6 @@ on:
   workflow_dispatch:
     inputs:
 
-      # fetch parameters, default is defined in fetch/fetch_variables.py
-      searchTerm:
-        description: 'search_term'
-        required: false
-        type: string
-
-      minPriceSEK:
-        description: 'min_price_sek'
-        required: false
-        type: string
-
-      maxPriceSEK:
-        description: 'max_price_sek'
-        required: false
-        type: string
-
-      minPriceUSD:
-        description: 'min_price_usd'
-        required: false
-        type: string
-
-      maxPriceUSD:
-        description: 'max_price_usd'
-        required: false
-        type: string
-
       # optional option of choosing which marketplaces to fetch from, default is all
       fetchBlocket:
         description: 'Fetch Blocket'
@@ -62,6 +36,32 @@ on:
         required: false
         type: boolean
         default: false # will not be run by default
+
+      # fetch parameters, default is defined in fetch/fetch_variables.py
+      searchTerm:
+        description: 'search_term'
+        required: false
+        type: string
+
+      minPriceSEK:
+        description: 'min_price_sek'
+        required: false
+        type: string
+
+      maxPriceSEK:
+        description: 'max_price_sek'
+        required: false
+        type: string
+
+      minPriceUSD:
+        description: 'min_price_usd'
+        required: false
+        type: string
+
+      maxPriceUSD:
+        description: 'max_price_usd'
+        required: false
+        type: string
 
 jobs:
   fetch-tradera:
