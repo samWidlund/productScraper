@@ -247,7 +247,7 @@ python3 fetch/[PLATFORM_NAME]/[FETCH_SCRIPT].py
 ```
 
 **Automated:**
-Configured to run every 3 hours via github actions. See `.github/workflows/scrapers.yml`
+Configured to run once every day. See `.github/workflows/scrapers.yml`
 > **Note:** Make sure to create and include .env variables in environment secrets.
 
 ## Project Structure
