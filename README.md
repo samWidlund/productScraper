@@ -19,7 +19,9 @@ After years of reselling clothes, I grew tired of manually searching marketplace
 - Database integration preventing repeated notifications
 - Cross-platform publishing via Google Sheets
 
-# Scraper tool
+</br>
+
+# Scraping
 
 ## Supported Platforms
 
@@ -216,18 +218,22 @@ CREATE POLICY "Users can only see their own data" ON ebay_products
 
 > **Note:** Supabase automatically pauses the project/database after 7 days of inactivity. Visit [supabase.com](https://supabase.com) to restore your database, may take minutes up to several hours.
 
-### Publishing
+</br>
 
-The `publish/` tool posts products to multiple platforms simultaneously using a Google Sheet as the source of truth.
+# Publishing
 
-**Setup:**
+The `publish/` tool helps user publish products att multiple marketplaces using google sheet as source of truth.
+
+## Get started
+
+### Setup
 
 1. Enable the Google Sheets API and create service account credentials
 2. Download the credentials JSON and save as `credentials.json` in the project root
 3. Share your Google Sheet (named `publishProducts`) with the service account email
 4. Populate the sheet with product data (title, price, description, images)
 
-**Run:**
+### Run
 
 ```bash
 python3 publish/publishProducts.py
