@@ -16,12 +16,6 @@ def main():
     except ValueError as e:
         print(f"configuration error: {e}")
         sys.exit(1)
-    except httpx.HTTPStatusError as e:
-        if e.response.status_code == 403:
-            print("error: Vinted returned 403 Forbidden - the scraper is being blocked. Try again later.") ## pass script even when scraper is blocked
-            return
-        print(f"error: Vinted API returned HTTP {e.response.status_code}: {e}")
-        return
     except Exception as e:
         print(f"error: failed to connect to database: {e}")
         sys.exit(1)
@@ -32,6 +26,12 @@ def main():
     try:
         se_scraper = VintedScraper("https://www.vinted.se")
         se_items = se_scraper.search({"search_text": search_term})
+    except httpx.HTTPStatusError as e:
+        if e.response.status_code == 403:
+            print("error: Vinted returned 403 Forbidden - the scraper is being blocked. Try again later.") ## pass script even when scraper is blocked
+            return
+        print(f"error: Vinted API returned HTTP {e.response.status_code}: {e}")
+        return
     except Exception as e:
         print(f"error: failed to fetch Vinted listings: {e}")
         sys.exit(1)
