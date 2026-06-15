@@ -8,7 +8,6 @@ from apify_client import ApifyClient
 from notification.telegramBot import notify_product, get_sent_notifications
 from database.database import SupabaseClient
 from fetch.fetch_variables import search_term, max_price_sek, min_price_sek
-import httpx
 
 
 def main():
@@ -33,12 +32,6 @@ def main():
 
     try:
         run = client.actor("U5DUNxhH3qKt5PnCf").call(run_input=run_input)
-    except httpx.HTTPStatusError as e:
-        if e.response.status_code == 403:
-            print("error: Facebook returned 403 Forbidden - the scraper is being blocked. Try again later.")
-            return
-        print(f"error: Facebook API returned HTTP {e.response.status_code}: {e}")
-        return
     except Exception as e:
         print(f"error: failed to run Apify actor: {e}")
         sys.exit(1)
@@ -65,12 +58,6 @@ def main():
 
     try:
         items = client.dataset(default_dataset).iterate_items()
-    except httpx.HTTPStatusError as e:
-        if e.response.status_code == 403:
-            print("error: Facebook returned 403 Forbidden - the scraper is being blocked. Try again later.")
-            return
-        print(f"error: Facebook API returned HTTP {e.response.status_code}: {e}")
-        return
     except Exception as e:
         print(f"error: failed to access Apify dataset: {e}")
         sys.exit(1)

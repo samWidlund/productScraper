@@ -54,12 +54,6 @@ def extract_simple(item: dict):
 def main():
     try:
         api = TraderaAPI()
-    except httpx.HTTPStatusError as e:
-        if e.response.status_code == 403:
-            print("error: Tradera returned 403 Forbidden - the scraper is being blocked. Try again later.") ## pass script even when scraper is blocked
-            return
-        print(f"error: Tradera API returned HTTP {e.response.status_code}: {e}")
-        return
     except Exception as e:
         print(f"error: failed to initialize TraderaAPI: {e}")
         sys.exit(1)
@@ -82,6 +76,12 @@ def main():
     for st in search_types:
         try:
             res = api.search(query=search_term, price=(min_price_sek, max_price_sek), auction_type=st)
+        except httpx.HTTPStatusError as e:
+            if e.response.status_code == 403:
+                print("error: Tradera returned 403 Forbidden - the scraper is being blocked. Try again later.") ## pass script even when scraper is blocked
+                return
+            print(f"error: Tradera API returned HTTP {e.response.status_code}: {e}")
+            return
         except Exception as e:
             print(f"error: failed to search Tradera for type {st.name}: {e}")
             continue
