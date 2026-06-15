@@ -6,6 +6,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 from notification.telegramBot import notify_product, get_sent_notifications
 from database.database import SupabaseClient
 from fetch.fetch_variables import search_term, max_price_sek, max_price_usd, min_price_sek, min_price_usd
+import httpx
 
 
 def main():
@@ -15,6 +16,12 @@ def main():
     except ValueError as e:
         print(f"configuration error: {e}")
         sys.exit(1)
+    except httpx.HTTPStatusError as e:
+        if e.response.status_code == 403:
+            print("error: Vinted returned 403 Forbidden - the scraper is being blocked. Try again later.") ## pass script even when scraper is blocked
+            return
+        print(f"error: Vinted API returned HTTP {e.response.status_code}: {e}")
+        return
     except Exception as e:
         print(f"error: failed to connect to database: {e}")
         sys.exit(1)

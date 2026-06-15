@@ -7,6 +7,7 @@ from fetch.ebay.ebay_api import EbayAPI
 from database.database import SupabaseClient
 import fetch.ebay.config as config
 from fetch.fetch_variables import search_term, max_price_usd, min_price_usd
+import httpx
 
 
 def main():
@@ -36,6 +37,12 @@ def main():
             min_price=min_price_usd,
             marketplace='US'
         )
+    except httpx.HTTPStatusError as e:
+        if e.response.status_code == 403:
+            print("error: eBay returned 403 Forbidden - the scraper is being blocked. Try again later.") ## pass script even when scraper is blocked
+            return
+        print(f"error: eBay API returned HTTP {e.response.status_code}: {e}")
+        return
     except Exception as e:
         print(f"error: failed to search eBay: {e}")
         sys.exit(1)

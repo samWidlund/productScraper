@@ -5,10 +5,10 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 from tradera_api.tradera import TraderaAPI, BASE_URL, AuctionType
-import json
 from notification.telegramBot import notify_product, get_sent_notifications
 from database.database import SupabaseClient
 from fetch.fetch_variables import search_term, max_price_sek, min_price_sek
+import httpx
 
 
 def find_items(response: dict):
@@ -54,6 +54,12 @@ def extract_simple(item: dict):
 def main():
     try:
         api = TraderaAPI()
+    except httpx.HTTPStatusError as e:
+        if e.response.status_code == 403:
+            print("error: Tradera returned 403 Forbidden - the scraper is being blocked. Try again later.") ## pass script even when scraper is blocked
+            return
+        print(f"error: Tradera API returned HTTP {e.response.status_code}: {e}")
+        return
     except Exception as e:
         print(f"error: failed to initialize TraderaAPI: {e}")
         sys.exit(1)
