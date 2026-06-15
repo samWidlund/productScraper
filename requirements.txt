@@ -5,3 +5,4 @@ apify_client
 blocket-api==0.4
 vinted_scraper
 python-telegram-bot
+httpx

@@ -6,6 +6,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 from notification.telegramBot import notify_product, get_sent_notifications
 from database.database import SupabaseClient
 from fetch.fetch_variables import search_term, max_price_sek, min_price_sek
+import httpx
 from blocket_api import (
     BlocketAPI,
     SortOrder,
@@ -48,6 +49,12 @@ def main():
             sort_order=SortOrder.PRICE_ASC,
             locations=all_locations
         )
+    except httpx.HTTPStatusError as e:
+        if e.response.status_code == 403:
+            print("error: Blocket returned 403 Forbidden - the scraper is being blocked. Try again later.") ## pass script even when scraper is blocked
+            return
+        print(f"error: Blocket API returned HTTP {e.response.status_code}: {e}")
+        return
     except Exception as e:
         print(f"error: failed to search Blocket: {e}")
         sys.exit(1)
