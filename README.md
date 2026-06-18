@@ -19,7 +19,20 @@ After years of reselling clothes, I grew tired of manually searching marketplace
 - Database integration preventing repeated notifications
 - Cross-platform publishing via Google Sheets
 
-</br>
+## Project Structure
+
+```
+├── fetch/                    # Marketplace scrapers
+│   ├── blocket/
+│   ├── ebay/
+│   ├── facebook/
+│   ├── tradera/
+│   └── vinted/
+├── database/                 # Database operations
+├── publish/                  # Cross-platform publishing tool
+├── notification/             # User bot notificiation
+└── README.md
+```
 
 # Scraping
 
@@ -218,6 +231,19 @@ CREATE POLICY "Users can only see their own data" ON ebay_products
 
 > **Note:** Supabase automatically pauses the project/database after 7 days of inactivity. Visit [supabase.com](https://supabase.com) to restore your database, may take minutes up to several hours.
 
+### Run script
+
+**Locally:**
+> **Note:** Replace [PLATFORM_NAME] with the correspondig platform e.g. `facebook` and [FETCH_SCRIPT] with the python script e.g. `fb_marketplace.py`
+
+```bash
+python3 fetch/[PLATFORM_NAME]/[FETCH_SCRIPT].py
+```
+
+**Automated:**
+Configured to run once every day. See `.github/workflows/scrapers.yml`
+> **Note:** Make sure to create and include .env variables in environment secrets.
+
 </br>
 
 # Publishing
@@ -233,7 +259,7 @@ The `publish/` tool helps user publish products att multiple marketplaces using 
 3. Share your Google Sheet (named `publishProducts`) with the service account email
 4. Populate the sheet with product data (title, price, description, images)
 
-### Run
+### Run script
 
 ```bash
 python3 publish/publishProducts.py
@@ -242,34 +268,6 @@ python3 publish/publishProducts.py
 The script reads the first two rows from the sheet and prints them — extend it to integrate with your target platforms.
 
 > **Note:** `gspread` and `oauth2client` are required. Install with `pip install gspread oauth2client`.
-
-### Running
-
-**Locally:**
-> **Note:** Replace [PLATFORM_NAME] with the correspondig platform e.g. `facebook` and [FETCH_SCRIPT] with the python script e.g. `fb_marketplace.py`
-
-```bash
-python3 fetch/[PLATFORM_NAME]/[FETCH_SCRIPT].py
-```
-
-**Automated:**
-Configured to run once every day. See `.github/workflows/scrapers.yml`
-> **Note:** Make sure to create and include .env variables in environment secrets.
-
-## Project Structure
-
-```
-├── fetch/                    # Marketplace scrapers
-│   ├── blocket/
-│   ├── ebay/
-│   ├── facebook/
-│   ├── tradera/
-│   └── vinted/
-├── database/                 # Database operations
-├── publish/                  # Cross-platform publishing tool (Google Sheets)
-├── notification/             # User bot notificiation       
-└── README.md
-```
 
 ## References
 [EbayAPI](https://developer.ebay.com/develop) \
