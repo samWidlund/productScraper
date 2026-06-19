@@ -27,7 +27,7 @@ def main():
         se_scraper = VintedScraper("https://www.vinted.se")
         se_items = se_scraper.search({"search_text": search_term})
     except httpx.HTTPStatusError as e:
-        if e.response.status_code == 403:
+        if e.response.status_code == 406:
             print("error: Vinted returned 403 Forbidden - the scraper is being blocked. Try again later.") ## pass script even when scraper is blocked
             return
         print(f"error: Vinted API returned HTTP {e.response.status_code}: {e}")
