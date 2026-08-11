@@ -17,7 +17,7 @@ After years of reselling clothes, I grew tired of manually searching marketplace
 - Real-time Telegram notifications
 - Product filtering by keyword and price
 - Database integration preventing repeated notifications
-- Cross-platform publishing via Google Sheets
+- Cross-platform publishing helper tool
 
 ## Project Structure
 
